@@ -1,0 +1,75 @@
+<nav class="top-nav">
+  <div class="container flex-between">
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/3144/3144573.png" alt="logo">
+      <span>Piscinas Verano Perfecto</span>
+    </div>
+
+    <div class="contact-info">
+      <span class="me-3">📞 +56 222270505</span>
+    <button class="user-access-btn" routerLink="/login">
+        <img src="/user-icon.png" alt="User" class="nav-user-img">
+        <span>Acceso</span>
+      </button>
+    </div>
+
+
+  </div>
+</nav>
+
+<div class="menu-bar">
+  <div class="container flex-between">
+    <ul class="nav-links">
+      <li><a href="#" class="active">Inicio</a></li>
+
+      <li class="dropdown">
+        <a href="#">Agenda Mantención ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="#">📅 Vista Diaria</a></li>
+          <li><a href="#">🔍 Filtro por Técnico</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#">Tienda ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="#">Artículos</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#">Mantenciones ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="#">📊 Tabla de Estados</a></li>
+          <li><a href="#">🛠️ Nueva Mantención</a></li>
+          <li><a href="#">👷 Asignar Técnico</a></li>
+        </ul>
+      </li>
+     @if (isAdmin) { 
+      <li class="dropdown">
+        <a href="#">Acceso Técnico (Próximanente) ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="#">📋 Lista de Clientes</a></li>
+          <li><a href="#">➕ Agregar Cliente</a></li>
+          <li><a href="#">👤 Seleccionar Cliente</a></li>
+          <li><a href="#">💰 Registrar Venta</a></li>
+        </ul>
+      </li>
+      }
+
+    </ul>
+
+    <div class="role-switcher">
+      <span [style.color]="isAdmin ? '#26c6da' : '#666'">
+        {{ isAdmin ? 'Modo: Admin 🛠️' : 'Modo: Usuario normal' }}
+      </span>
+      <button class="btn-switch" (click)="toggleRole()">
+        Cambiar Rol
+      </button>
+    </div>
+
+    <button class="btn-login">
+      🔒 Salir
+    </button>
+  </div>
+</div>

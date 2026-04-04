@@ -1,0 +1,175 @@
+/* 1. BARRA AZUL SUPERIOR */
+.top-nav {
+  background-color: #003366; /* El azul oscuro de tu foto */
+  color: white;
+  padding: 8px 0;
+}
+
+/* 2. BARRA BLANCA DE MENÚ */
+.menu-bar {
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0;
+}
+
+/* 3. CONTENEDOR (Para que nada toque los bordes de la pantalla) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 4. LOGO (Aquí corregimos el tamaño gigante) */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  width: 40px; /* Tamaño controlado */
+  height: auto;
+  filter: brightness(0) invert(1); /* Esto pone el logo negro en blanco para que resalte en el azul */
+}
+
+.logo span {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* 5. LINKS Y DROPDOWNS */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a, .nav-links > li > a {
+  text-decoration: none;
+  color: #555;
+  padding: 15px 20px;
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.nav-links > li > a.active {
+  color: #003366;
+  border-bottom: 3px solid #003366;
+}
+
+/* CAJA DESPLEGABLE (Ahora sí flotará correctamente) */
+.dropdown-content {
+  display: none; 
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 200px; 
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+  z-index: 1000;
+  border-radius: 0 0 8px 8px;
+  list-style: none;
+  padding: 10px 0;
+  top: 100%; 
+  left: 0;
+  border: 1px solid #eee;
+}
+
+.dropdown-content li a {
+  color: #444 !important;
+  padding: 10px 20px !important;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content li a:hover {
+  background-color: #f8f9fa;
+  color: #26c6da !important;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 6. BOTÓN SALIR Y ACCESO */
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.9rem;
+}
+
+.btn-login {
+  background: #f8f9fa;
+  color: #444;
+  border: 1px solid #ddd;
+  padding: 6px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-login:hover {
+  background: #eee;
+}
+
+/* pal boton log in */
+.user-access-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.user-access-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-user-img {
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+/* boton modo admin*/
+
+.role-switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.btn-switch {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.btn-switch:hover {
+  background-color: #004d99;
+}
