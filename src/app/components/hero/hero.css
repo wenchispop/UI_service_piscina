@@ -1,58 +1,228 @@
-.hero-container {
+/* src/app/components/hero/hero.css */
+
+/* Contenedor Global y Estructura */
+.container {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 0 20px;
 }
 
+.hero-container {
+  background-color: #f4f7f6; 
+  padding-bottom: 50px;
+  min-height: 100vh;
+}
+
+/* =========================================
+   BANNER PRINCIPAL (Ajustado y Compacto)
+   ========================================= */
+.main-banner {
+  position: relative;
+  /* Imagen de fondo con overlay oscuro para legibilidad */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                    url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  min-height: 250px; /* Altura compacta solicitada */
+  display: flex;
+  align-items: center;
+  color: white;
+  border-radius: 0 0 25px 25px; /* Bordes redondeados inferiores */
+  margin-bottom: 40px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.main-banner .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Breadcrumb (Dashboard / ...) */
 .breadcrumb {
-  font-size: 0.85rem;
-  color: #888;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 15px;
 }
 
-.breadcrumb a {
-  text-decoration: none;
-  color: #666;
-  font-weight: bold;
-}
-
-.hero-card {
-  height: 450px;
-  border-radius: 20px;
-  overflow: hidden;
-  background-image: url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
-  display: flex;
-  align-items: flex-end;
-  padding: 60px;
-}
-
-.hero-content {
+.breadcrumb .active {
   color: white;
-  border-left: 6px solid #26c6da;
-  padding-left: 20px;
+  font-weight: 600;
 }
 
-.hero-content h1 {
-  font-size: 3rem;
-  margin: 0;
-  font-weight: bold;
+/* Títulos del Banner */
+.banner-content h1 {
+  font-size: 2.8rem;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.hero-content p {
+.banner-content p {
   font-size: 1.2rem;
-  margin-top: 10px;
+  margin: 0;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================
+   GRILLA DE SERVICIOS (3 Columnas)
+   ========================================= */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.service-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.service-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.service-card .card-footer {
+  padding: 18px 22px;
+  background-color: #003366; /* Azul marino del navbar */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-card .card-footer h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.service-card .card-footer .btn-text {
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
   opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.service-card .card-footer .btn-text:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* =========================================
+   SECCIÓN DE PRODUCTOS (4 Columnas)
+   ========================================= */
+.products-section h2 {
+  color: #003366;
+  font-size: 2rem;
+  margin-bottom: 35px;
+  padding-left: 5px;
+  border-left: 5px solid #004d99;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.product-card .product-image {
+  height: 200px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.product-card .product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Ajustado para fotos reales */
+  border-radius: 8px;
+}
+
+.product-card .product-info {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-card .product-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.product-card .product-info .price {
+  margin: 0 0 20px 0;
+  font-size: 1.4rem;
+  color: #004d99;
+  font-weight: 800;
+}
+
+/* Botón Agregar al Carrito */
+.btn-add-cart {
+  background-color: #004d99;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+  width: 100%;
+  margin-top: auto;
+}
+
+.btn-add-cart:hover {
+  background-color: #003366;
+}
+
+.btn-add-cart span {
+  font-size: 0.8rem;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 992px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .services-grid, .products-grid { grid-template-columns: 1fr; }
+  .banner-content h1 { font-size: 2rem; }
 }

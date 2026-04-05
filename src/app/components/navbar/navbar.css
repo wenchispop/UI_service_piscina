@@ -1,18 +1,18 @@
-/* 1. BARRA AZUL SUPERIOR */
+/* =========================================
+   1. ESTRUCTURA DE BARRAS (COLORES)
+   ========================================= */
 .top-nav {
-  background-color: #003366; /* El azul oscuro de tu foto */
+  background-color: #003366; /* Azul marino profesional */
   color: white;
-  padding: 8px 0;
+  padding: 10px 0;
 }
 
-/* 2. BARRA BLANCA DE MENÚ */
 .menu-bar {
   background-color: white;
   border-bottom: 1px solid #e0e0e0;
-  padding: 0;
+  padding: 5px 0;
 }
 
-/* 3. CONTENEDOR (Para que nada toque los bordes de la pantalla) */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -25,7 +25,9 @@
   align-items: center;
 }
 
-/* 4. LOGO (Aquí corregimos el tamaño gigante) */
+/* =========================================
+   2. LOGO CIRCULAR (CORREGIDO)
+   ========================================= */
 .logo {
   display: flex;
   align-items: center;
@@ -33,17 +35,28 @@
 }
 
 .logo img {
-  width: 40px; /* Tamaño controlado */
-  height: auto;
-  filter: brightness(0) invert(1); /* Esto pone el logo negro en blanco para que resalte en el azul */
+  width: 45px;            /* Tamaño controlado para el Navbar */
+  height: 45px;           /* Proporción 1:1 para el círculo */
+  object-fit: cover;      /* Evita que la imagen se estire */
+  border-radius: 50%;     /* FORMA CIRCULAR */
+  background-color: white; /* Fondo blanco para que resalte en el azul */
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: block;
+  
+  /* ELIMINADO: filter: brightness(0) invert(1) */
+  /* Quitamos el filtro para que el logo se vea original y no desaparezca */
 }
 
 .logo span {
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: white;           /* Texto blanco para la barra superior */
+  letter-spacing: -0.5px;
 }
 
-/* 5. LINKS Y DROPDOWNS */
+/* =========================================
+   3. NAVEGACIÓN Y DROPDOWNS
+   ========================================= */
 .nav-links {
   display: flex;
   list-style: none;
@@ -57,11 +70,12 @@
 
 .dropdown > a, .nav-links > li > a {
   text-decoration: none;
-  color: #555;
+  color: #444;
   padding: 15px 20px;
   display: block;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
 .nav-links > li > a.active {
@@ -69,7 +83,11 @@
   border-bottom: 3px solid #003366;
 }
 
-/* CAJA DESPLEGABLE (Ahora sí flotará correctamente) */
+.nav-links > li > a:hover {
+  color: #004d99;
+}
+
+/* CAJA DESPLEGABLE */
 .dropdown-content {
   display: none; 
   position: absolute;
@@ -85,48 +103,36 @@
   border: 1px solid #eee;
 }
 
-.dropdown-content li a {
-  color: #444 !important;
-  padding: 10px 20px !important;
-  display: block;
-  text-decoration: none;
-}
-
-.dropdown-content li a:hover {
-  background-color: #f8f9fa;
-  color: #26c6da !important;
-}
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* 6. BOTÓN SALIR Y ACCESO */
-.contact-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.dropdown-content li a {
+  color: #555 !important;
+  padding: 10px 20px !important;
+  display: block;
+  text-decoration: none;
   font-size: 0.9rem;
 }
 
-.btn-login {
-  background: #f8f9fa;
-  color: #444;
-  border: 1px solid #ddd;
-  padding: 6px 15px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
+.dropdown-content li a:hover {
+  background-color: #f8f9fa;
+  color: #003366 !important;
+}
+
+/* =========================================
+   4. ACCESO DE USUARIO Y ROLES (FIX FINAL)
+   ========================================= */
+
+.contact-info {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
+  color: white;
+  font-size: 0.9rem;
 }
 
-.btn-login:hover {
-  background: #eee;
-}
-
-/* pal boton log in */
+/* CONTENEDOR DEL BOTÓN DE ACCESO */
 .user-access-btn {
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -135,41 +141,63 @@
   border-radius: 20px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   transition: 0.3s;
+  text-decoration: none;
+}
+
+/* ICONO DE USUARIO (SOLUCIÓN AL TAMAÑO GIGANTE) */
+.nav-user-img {
+  width: 20px !important;  /* Forzamos el tamaño pequeño */
+  height: 20px !important;
+  border-radius: 50%;
+  object-fit: contain;
+  background: none !important; /* Quitamos fondos extra */
+  border: none !important;     /* Quitamos bordes del logo */
 }
 
 .user-access-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.25);
 }
 
-.nav-user-img {
-  width: 25px;
-  height: 25px;
-  object-fit: cover;
-}
-
-/* boton modo admin*/
-
+/* SECCIÓN MODO DE USUARIO (BARRA BLANCA) */
 .role-switcher {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 0.85rem;
-  font-weight: bold;
+  color: #666;
+  font-weight: 500;
 }
 
 .btn-switch {
   background-color: #003366;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.75rem;
+  font-weight: bold;
 }
 
-.btn-switch:hover {
-  background-color: #004d99;
+/* BOTÓN SALIR */
+.btn-login {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 4px 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-login img {
+  width: 14px;
+  height: 14px;
 }
