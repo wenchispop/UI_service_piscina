@@ -1,0 +1,46 @@
+.agenda-container { padding: 40px 20px; background: #f4f7f6; min-height: 70vh; }
+
+.agenda-header h2 { color: #003366; margin-bottom: 5px; }
+
+.agendar-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.form-grid input, .form-grid select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+}
+
+.btn-agendar {
+  background: #003366;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Tabla */
+.modern-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
+.modern-table th { background: #003366; color: white; padding: 15px; text-align: left; }
+.modern-table td { padding: 15px; border-bottom: 1px solid #eee; }
+
+/* Badges de tamaño */
+.badge-tamano { padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; }
+.badge-tamano[data-size="Pequeña"] { background: #e3f2fd; color: #1976d2; }
+.badge-tamano[data-size="Mediana"] { background: #f1f8e9; color: #689f38; }
+.badge-tamano[data-size="Grande"] { background: #fff3e0; color: #f57c00; }
+.badge-tamano[data-size="Olímpica"] { background: #ede7f6; color: #5e35b1; }

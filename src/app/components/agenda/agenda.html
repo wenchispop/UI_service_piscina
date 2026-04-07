@@ -1,0 +1,54 @@
+<div class="agenda-container container">
+  <div class="agenda-header">
+    <h2>🗓️ Vista Diaria: Agenda de Mantenciones</h2>
+    <p>Gestión de servicios según dimensiones de piscina</p>
+  </div>
+
+  <div class="agendar-card">
+    <h3>Simular Nueva Mantención</h3>
+    <div class="form-grid">
+      <input type="text" placeholder="Nombre del Cliente" #clienteName>
+      
+      <select #tamano>
+        <option value="" disabled selected>Tamaño de Piscina</option>
+        <option value="Pequeña">Pequeña (Hasta 20m³)</option>
+        <option value="Mediana">Mediana (Hasta 50m³)</option>
+        <option value="Grande">Grande (Hasta 100m³)</option>
+        <option value="Olímpica">Olímpica</option>
+      </select>
+
+      <input type="date" #fecha>
+      
+      <button class="btn-agendar" (click)="agregarCita(clienteName.value, tamano.value, fecha.value)">
+        Agendar Servicio
+      </button>
+    </div>
+  </div>
+
+  <div class="tabla-agenda">
+    <table class="modern-table">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Tamaño Piscina</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of listaAgenda">
+          <td><strong>{{cita.cliente}}</strong></td>
+          <td><span class="badge-tamano" [attr.data-size]="cita.tamanoPiscina">{{cita.tamanoPiscina}}</span></td>
+          <td>{{cita.fecha}}</td>
+          <td><span class="status-cita">{{cita.estado}}</span></td>
+          <td><button class="btn-check">✔️</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="back-footer">
+    <button routerLink="/" class="btn-volver">← Volver al Panel</button>
+  </div>
+</div>

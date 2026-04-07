@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Importante para usar directivas
+import { RouterLink, Router, RouterModule } from '@angular/router'; // Importa Router
+import { CommonModule } from '@angular/common'; 
+import { AuthService } from '../../services/auth.service'; 
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, RouterModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
 export class Navbar {
-  // Por defecto empezamos como usuario común
-  isAdmin: boolean = false;
+  isAdmin = false;
 
-  // Función para el botón del switch
+  // Agrega "private router: Router" aquí
+  constructor(
+    private authService: AuthService,
+    private router: Router 
+  ) {}
+
   toggleRole() {
     this.isAdmin = !this.isAdmin;
+    this.authService.setAdminMode(this.isAdmin);
   }
 }

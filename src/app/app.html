@@ -1,3 +1,7 @@
-<main>
-  <router-outlet />
+<app-navbar *ngIf="router.url !== '/login'"></app-navbar>
+
+<main [ngClass]="{'full-height': router.url === '/login'}">
+  <router-outlet></router-outlet>
 </main>
+
+<app-footer *ngIf="router.url !== '/login'"></app-footer>

@@ -1,0 +1,55 @@
+<div class="clientes-container container">
+  <div class="clientes-header">
+    <div class="header-info">
+      <h1>Panel de Clientes</h1>
+      <p>Gestión de contratos y estados de cuenta corporativos</p>
+    </div>
+    <button class="btn-add-cliente">+ Registrar Nuevo Cliente</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="clientes-table">
+      <thead>
+        <tr>
+          <th>Nombre / Empresa</th>
+          <th>RUT</th>
+          <th>Tipo de Contrato</th>
+          <th>Monto Mensual</th>
+          <th>Estado de Pago</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of listaClientes">
+          <td class="cliente-name">
+            <div class="avatar-circle">{{ cliente.nombre.charAt(0) }}</div>
+            {{ cliente.nombre }}
+          </td>
+          <td>{{ cliente.rut }}</td>
+          <td><span class="plan-tag">{{ cliente.plan }}</span></td>
+          <td class="monto-text">${{ cliente.monto }}</td>
+          <td>
+            <span class="status-pill" [ngClass]="cliente.estado.toLowerCase().replace(' ', '-')">
+              {{ cliente.estado }}
+            </span>
+          </td>
+          <td>
+            <div class="actions">
+              <button class="btn-view" title="Ver Detalles">👁️</button>
+              <button class="btn-pdf" title="Descargar Contrato">📄</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="clientes-container container">
+  <div class="clientes-footer">
+    <button routerLink="/" class="btn-volver">
+      <span>←</span> Volver al Inicio
+    </button>
+  </div>
+</div>
+
+</div>

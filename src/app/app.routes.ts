@@ -1,9 +1,14 @@
 import { Routes } from '@angular/router';
-import { Hero } from './components/hero/hero'; // Tu página principal
+import { HeroComponent } from './components/hero/hero'; // Tu página principal
 import { Login} from './components/login/login';
+import { Clientes } from './components/clientes/clientes';
+import { AgendaComponent } from './components/agenda/agenda';
 
 export const routes: Routes = [
-  { path: '', component: Hero },     // Página inicial (Piscina)
+  { path: '', component: HeroComponent },     // Página inicial (Piscina)
   { path: 'login', component: Login }, // Página de Login
-  { path: '**', redirectTo: '' }               // Redirigir si la ruta no existe
+  { path: 'clientes', component: Clientes }, // Nueva página de clientes
+  { path: 'agenda', component: AgendaComponent },
+  { path: '**', redirectTo: '' }           // Redirigir si la ruta no existe
+
 ];

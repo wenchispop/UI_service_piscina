@@ -1,0 +1,156 @@
+.clientes-container {
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  min-height: 80vh;
+}
+
+.clientes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-info h1 {
+  color: #003366;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.header-info p {
+  color: #666;
+  margin: 5px 0 0 0;
+}
+
+.btn-add-cliente {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-add-cliente:hover {
+  background-color: #002244;
+}
+
+/* Tabla */
+.table-responsive {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.clientes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.clientes-table th {
+  background-color: #f1f4f8;
+  color: #003366;
+  padding: 15px;
+  text-align: left;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.clientes-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Nombre con Avatar */
+.cliente-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.avatar-circle {
+  width: 32px;
+  height: 32px;
+  background-color: #00d2ff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+/* Tags y Estados */
+.plan-tag {
+  background: #e1f5fe;
+  color: #01579b;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-pill {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.al-día { background: #e8f5e9; color: #2e7d32; }
+.pendiente { background: #fff3e0; color: #ef6c00; }
+.moroso { background: #ffebee; color: #c62828; }
+
+/* Acciones */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-view, .btn-pdf {
+  border: 1px solid #ddd;
+  background: white;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-view:hover { background: #f0f0f0; }
+.btn-pdf:hover { border-color: #003366; color: #003366; }
+
+
+.clientes-footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-volver {
+  background-color: transparent;
+  color: #003366;
+  border: 2px solid #003366;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+  background-color: #003366;
+  color: white;
+}
+
+.btn-volver span {
+  font-size: 1.2rem;
+}
