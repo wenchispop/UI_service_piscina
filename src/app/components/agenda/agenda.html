@@ -4,8 +4,8 @@
     <p>Gestión de servicios según dimensiones de piscina</p>
   </div>
 
-  <div class="agendar-card">
-    <h3>Simular Nueva Mantención</h3>
+  <div class="agendar-card" *ngIf="!esAdmin">
+    <h3>Agendar Nueva Mantención</h3>
     <div class="form-grid">
       <input type="text" placeholder="Nombre del Cliente" #clienteName>
       
@@ -18,19 +18,59 @@
       </select>
 
       <input type="date" #fecha>
+
+      <select #operador>
+        <option value="" disabled selected>Seleccione al operador</option>
+        <option value="Juan Pérez">Juan Pérez</option>
+        <option value="Andrés Soto">Andrés Soto</option>
+        <option value="Carla Ibáñez">Carla Ibáñez</option>
+        <option value="Roberto Gómez">Roberto Gómez</option>
+      </select>
       
-      <button class="btn-agendar" (click)="agregarCita(clienteName.value, tamano.value, fecha.value)">
+      <button class="btn-agendar" (click)="agregarCita(clienteName.value, tamano.value, fecha.value, operador.value)">
         Agendar Servicio
       </button>
     </div>
   </div>
 
-  <div class="tabla-agenda">
+  <div class="tabla-agenda" *ngIf="esAdmin">
+    <h3>📋 Panel de Gestión de Agenda (Administrador)</h3>
     <table class="modern-table">
       <thead>
         <tr>
           <th>Cliente</th>
           <th>Tamaño Piscina</th>
+          <th>Operador</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of listaAgenda; let i = index">
+          <td><strong>{{cita.cliente}}</strong></td>
+          <td><span class="badge-tamano" [attr.data-size]="cita.tamanoPiscina">{{cita.tamanoPiscina}}</span></td>
+          <td>{{cita.tecnico}}</td>
+          <td>{{cita.fecha}}</td>
+          <td><span class="status-cita">{{cita.estado}}</span></td>
+          <td class="actions-cell">
+            <button class="btn-check" title="Finalizar">✔️</button>
+            <button class="btn-delete" (click)="eliminarCita(i)" title="Borrar agendación">
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tabla-agenda" *ngIf="!esAdmin">
+    <h3>📅 Listado de Mis Mantenciones</h3>
+    <table class="modern-table">
+      <thead>
+        <tr>
+          <th>Tamaño Piscina</th>
+          <th>Operador Asignado</th>
           <th>Fecha</th>
           <th>Estado</th>
           <th>Acción</th>
@@ -38,17 +78,20 @@
       </thead>
       <tbody>
         <tr *ngFor="let cita of listaAgenda">
-          <td><strong>{{cita.cliente}}</strong></td>
           <td><span class="badge-tamano" [attr.data-size]="cita.tamanoPiscina">{{cita.tamanoPiscina}}</span></td>
+          <td>{{cita.tecnico}}</td>
           <td>{{cita.fecha}}</td>
           <td><span class="status-cita">{{cita.estado}}</span></td>
-          <td><button class="btn-check">✔️</button></td>
+          <td><button class="btn-check" title="Marcar llegada">✔️</button></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="back-footer">
-    <button routerLink="/" class="btn-volver">← Volver al Panel</button>
-  </div>
+<div class="back-footer">
+  <button routerLink="/" class="btn-back">
+    <span class="icon">←</span>
+    <span class="text">Volver al Panel Principal</span>
+  </button>
+</div>
 </div>

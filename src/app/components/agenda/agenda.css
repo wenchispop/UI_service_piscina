@@ -44,3 +44,53 @@
 .badge-tamano[data-size="Mediana"] { background: #f1f8e9; color: #689f38; }
 .badge-tamano[data-size="Grande"] { background: #fff3e0; color: #f57c00; }
 .badge-tamano[data-size="Olímpica"] { background: #ede7f6; color: #5e35b1; }
+
+/* Contenedor para separar el botón de la tabla */
+.back-footer {
+  margin-top: 30px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Estilo base del botón */
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background-color: #f8f9fa; /* Gris muy claro */
+  color: #495057; /* Texto gris oscuro */
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Animación suave */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Efecto al pasar el mouse (UX mejorada) */
+.btn-back:hover {
+  background-color: #e9ecef;
+  color: #212529;
+  border-color: #adb5bd;
+  transform: translateY(-2px); /* Pequeño salto hacia arriba */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Animación de la flecha al hacer hover */
+.btn-back:hover .icon {
+  transform: translateX(-5px); /* La flecha se mueve a la izquierda */
+}
+
+.icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto al hacer clic */
+.btn-back:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
