@@ -308,3 +308,37 @@
   font-size: 0.75rem;
   opacity: 0.8;
 }
+
+.access-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.access-link:hover {
+  opacity: 0.7;
+}
+
+.user-icon-container {
+  width: 18px; /* Tamaño pequeño y discreto */
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan); /* Aquí le das el color al icono */
+}
+
+.user-icon-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.access-text {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
