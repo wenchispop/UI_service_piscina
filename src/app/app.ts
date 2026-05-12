@@ -17,6 +17,5 @@ import { Footer } from './components/footer/footer';
   styleUrl: './app.css'
 })
 export class AppComponent {
-  // EL CAMBIO ESTÁ AQUÍ: debe decir 'public'
   constructor(public router: Router) {} 
 }

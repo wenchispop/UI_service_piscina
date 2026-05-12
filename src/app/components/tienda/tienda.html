@@ -1,0 +1,51 @@
+<div class="tienda-container">
+  <div class="filters-header">
+    <div class="filter-group">
+      <label>Buscar</label>
+      <input type="text" [(ngModel)]="filtroNombre" placeholder="¿Qué necesitas buscar?">
+    </div>
+    <div class="filter-group">
+      <label>Categoría</label>
+      <select [(ngModel)]="categoriaSeleccionada">
+        <option value="Todos">Todas las categorías</option>
+        <option value="Filtros">Filtros</option>
+        <option value="Bombas">Bombas</option>
+        <option value="Kits">Kits</option>
+        <option value="Químicos">Químicos</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let p of productosFiltrados">
+      <span class="category-tag">{{ p.categoria }}</span>
+      
+      <div class="product-image">
+        <img [src]="p.imagen" [alt]="p.nombre">
+      </div>
+
+      <h4>{{ p.nombre }}</h4>
+      <p class="description">{{ p.descripcion }}</p>
+      
+      <p class="stock-status" [ngClass]="p.stock">
+        {{ p.stock === 'in' ? '● En Stock' : '● Pocas Unidades' }}
+      </p>
+
+      <p class="price">CLP {{ p.precio | number }}</p>
+
+      <div class="purchase-controls">
+        <div class="quantity-selector">
+          <button (click)="cambiarCantidad(p, -1)">-</button>
+          <span>{{ p.cantidad }}</span>
+          <button (click)="cambiarCantidad(p, 1)">+</button>
+        </div>
+
+        <button class="btn-add" (click)="agregar(p)">
+          🛒 Añadir al Carrito
+        </button>
+        
+        <button class="btn-quick-view">👁 Vista Rápida</button>
+      </div>
+    </div>
+  </div>
+</div>
