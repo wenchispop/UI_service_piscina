@@ -1,52 +1,51 @@
-<nav class="top-nav">
-  <div class="container flex-between">
-    <div class="logo">
-      <img src="/logo-piscina.png" alt="Logo" class="footer-logo-img">
-      <span>AquaStore</span>
+<nav class="navbar-premium">
+  <div class="nav-wrapper">
+    
+    <div class="nav-brand" routerLink="/">
+      <div class="logo-box">
+        <img src="/logo-piscina.png" alt="AquaStore">
+      </div>
+      <span class="brand-text">Aqua<span class="highlight">Store</span></span>
     </div>
-    <div class="contact-info">
-      <span class="me-3">📞 +56 222270505</span>
-      <button class="user-access-btn" routerLink="/login">
-        <img src="/user-icon.png" alt="User" class="nav-user-img">
-        <span>Acceso</span>
-      </button>
-    </div>
-  </div>
-</nav>
 
-<div class="menu-bar">
-  <div class="container flex-between">
     <ul class="nav-links">
-      <li><a routerLink="/" routerLinkActive="active">Inicio</a></li>
+      <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</a></li>
+      
       <li class="dropdown">
-        <a style="cursor: pointer;">Agenda Mantención ▾</a>
-        <ul class="dropdown-content">
-          <li><a routerLink="/agenda">📅 Agenda tu mantención</a></li>
-        </ul>
+        <button class="drop-btn">Servicios ▾</button>
+        <div class="dropdown-content">
+          <a routerLink="/agenda">📅 Agenda Mantención</a>
+          <a routerLink="/clientes" *ngIf="isAdmin">👥 Lista de Clientes</a>
+        </div>
       </li>
-      <li class="dropdown">
-        <a style="cursor: pointer;">Tienda ▾</a>
-        <ul class="dropdown-content">
-          <li><a routerLink="/tienda">Artículos</a></li>
-        </ul>
+
+      <li><a routerLink="/tienda" routerLinkActive="active-link">Tienda</a></li>
+
+      <li class="dropdown" *ngIf="isAdmin">
+        <button class="drop-btn admin-btn">Admin ⚙️</button>
+        <div class="dropdown-content">
+          <a routerLink="/admin-productos">📦 Gestionar Inventario</a>
+          <a href="#">📊 Reportes de Venta</a>
+        </div>
       </li>
     </ul>
 
-    <div class="nav-actions" style="display: flex; gap: 15px; align-items: center;">
-      <div class="role-switcher">
-        <span>{{ isAdmin ? 'Modo: Admin 🛠️' : 'Modo: Usuario normal' }}</span>
-        <button class="btn-switch" (click)="toggleRole()">Cambiar Rol</button>
+    <div class="nav-actions">
+      
+      <div class="role-pill" (click)="toggleRole()" [class.admin-active]="isAdmin">
+        <div class="status-dot"></div>
+        <span>{{ isAdmin ? 'Admin' : 'Cliente' }}</span>
       </div>
 
-      <button class="btn-cart" routerLink="/checkout" style="position: relative; background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-        🛒
-        <span class="cart-badge" *ngIf="((cartService.cartCount$ | async) ?? 0) > 0" 
-              style="position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem;">
+      <div class="cart-anchor" routerLink="/checkout">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-badge" *ngIf="((cartService.cartCount$ | async) ?? 0) > 0">
           {{ cartService.cartCount$ | async }}
         </span>
-      </button>
+      </div>
 
-      <button class="btn-login" (click)="logout()">🔒 Salir</button>
+      <button class="btn-exit" (click)="logout()">Salir</button>
+
     </div>
   </div>
-</div>
+</nav>

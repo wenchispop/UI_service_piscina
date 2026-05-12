@@ -1,232 +1,211 @@
-/* =========================================
-   1. ESTRUCTURA DE BARRAS (COLORES)
-   ========================================= */
-.top-nav {
-  background-color: #003366; /* Azul marino profesional */
-  color: white;
-  padding: 10px 0;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:host {
+  --nav-blue: #002447;    /* Azul sólido para toda la barra */
+  --cyan: #00e5ff;
+  --white: #ffffff;
+  --transition: all 0.25s ease-in-out;
 }
 
-.menu-bar {
-  background-color: white;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 5px 0;
+.navbar-premium {
+  background-color: var(--nav-blue); /* Se acabó el blanco */
+  height: 70px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.container {
-  max-width: 1200px;
+.nav-wrapper {
+  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
-}
-
-.flex-between {
+  padding: 0 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* =========================================
-   2. LOGO CIRCULAR (CORREGIDO)
-   ========================================= */
-.logo {
+/* LOGO */
+.nav-brand {
   display: flex;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
 }
 
-.logo img {
-  width: 45px;            /* Tamaño controlado para el Navbar */
-  height: 45px;           /* Proporción 1:1 para el círculo */
-  object-fit: cover;      /* Evita que la imagen se estire */
-  border-radius: 50%;     /* FORMA CIRCULAR */
-  background-color: white; /* Fondo blanco para que resalte en el azul */
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  display: block;
-  
-  /* ELIMINADO: filter: brightness(0) invert(1) */
-  /* Quitamos el filtro para que el logo se vea original y no desaparezca */
+.logo-box {
+  width: 38px;
+  height: 38px;
+  background: white;
+  border-radius: 8px;
+  padding: 5px;
+  display: flex;
 }
 
-.logo span {
-  font-weight: 800;
-  font-size: 1.3rem;
-  color: white;           /* Texto blanco para la barra superior */
-  letter-spacing: -0.5px;
+.brand-text {
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
-/* =========================================
-   3. NAVEGACIÓN Y DROPDOWNS
-   ========================================= */
+.highlight { color: var(--cyan); }
+
+/* LINKS & DROPDOWNS */
 .nav-links {
   display: flex;
   list-style: none;
+  gap: 5px;
   margin: 0;
   padding: 0;
 }
 
-.dropdown {
-  position: relative;
-}
+.nav-links li { position: relative; }
 
-.dropdown > a, .nav-links > li > a {
+.nav-links a, .drop-btn {
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  color: #444;
-  padding: 15px 20px;
-  display: block;
+  padding: 10px 15px;
+  font-weight: 500;
   font-size: 0.95rem;
-  font-weight: 600;
-  transition: color 0.3s;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: block;
 }
 
-.nav-links > li > a.active {
-  color: #003366;
-  border-bottom: 3px solid #003366;
+.nav-links a:hover, .active-link, .drop-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
 }
 
-.nav-links > li > a:hover {
-  color: #004d99;
-}
+.admin-btn { color: #ffc107 !important; font-weight: 700; }
 
-/* CAJA DESPLEGABLE */
+/* FIX: EL DROPDOWN AHORA ES FÁCIL DE SELECCIONAR */
 .dropdown-content {
-  display: none; 
   position: absolute;
-  background-color: #ffffff;
-  min-width: 200px; 
-  box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
-  z-index: 1000;
-  border-radius: 0 0 8px 8px;
-  list-style: none;
-  padding: 10px 0;
-  top: 100%; 
+  top: 100%; /* Justo debajo del botón */
   left: 0;
+  background: white;
+  min-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  padding: 8px 0;
+  display: none;
+  z-index: 10;
+  /* El "puente" para que no se cierre: */
+  margin-top: 0; 
   border: 1px solid #eee;
+}
+
+/* Este pseudo-elemento llena el espacio vacío entre el botón y el menú */
+.dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 15px; /* Espacio de seguridad */
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+  animation: fadeIn 0.2s ease-out;
 }
 
-.dropdown-content li a {
-  color: #555 !important;
-  padding: 10px 20px !important;
-  display: block;
-  text-decoration: none;
-  font-size: 0.9rem;
+.dropdown-content a {
+  color: #333 !important;
+  padding: 12px 20px !important;
+  border-radius: 0;
 }
 
-.dropdown-content li a:hover {
-  background-color: #f8f9fa;
-  color: #003366 !important;
+.dropdown-content a:hover {
+  background: #f1f5f9 !important;
+  color: var(--nav-blue) !important;
 }
 
-/* =========================================
-   4. ACCESO DE USUARIO Y ROLES (FIX FINAL)
-   ========================================= */
-
-.contact-info {
+/* ACCIONES */
+.nav-actions {
   display: flex;
   align-items: center;
-  gap: 15px;
-  color: white;
-  font-size: 0.9rem;
+  gap: 20px;
 }
 
-/* CONTENEDOR DEL BOTÓN DE ACCESO */
-.user-access-btn {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  padding: 5px 15px;
+.role-pill {
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 12px;
   border-radius: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition: 0.3s;
-  text-decoration: none;
-}
-
-/* ICONO DE USUARIO (SOLUCIÓN AL TAMAÑO GIGANTE) */
-.nav-user-img {
-  width: 20px !important;  /* Forzamos el tamaño pequeño */
-  height: 20px !important;
-  border-radius: 50%;
-  object-fit: contain;
-  background: none !important; /* Quitamos fondos extra */
-  border: none !important;     /* Quitamos bordes del logo */
-}
-
-.user-access-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* SECCIÓN MODO DE USUARIO (BARRA BLANCA) */
-.role-switcher {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.85rem;
-  color: #666;
-  font-weight: 500;
-}
-
-.btn-switch {
-  background-color: #003366;
   color: white;
-  border: none;
-  padding: 4px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.75rem;
-  font-weight: bold;
 }
 
-/* BOTÓN SALIR */
-.btn-login {
-  background-color: white;
-  color: #333;
-  border: 1px solid #ccc;
-  padding: 4px 12px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-}
+.status-dot { width: 7px; height: 7px; background: #666; border-radius: 50%; }
+.admin-active { border-color: var(--cyan); background: rgba(0, 229, 255, 0.1); }
+.admin-active .status-dot { background: var(--cyan); box-shadow: 0 0 5px var(--cyan); }
 
-.btn-login img {
-  width: 14px;
-  height: 14px;
-}
-
-.btn-cart {
-  position: relative;
-  background: transparent;
-  border: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-}
-
+.cart-anchor { position: relative; cursor: pointer; font-size: 1.3rem; }
 .cart-badge {
   position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #ff5252; /* Rojo vibrante */
+  top: -5px;
+  right: -8px;
+  background: #ff4d4d;
   color: white;
-  font-size: 0.7rem;
-  font-weight: bold;
-  min-width: 18px;
-  height: 18px;
+  font-size: 0.65rem;
+  padding: 2px 5px;
   border-radius: 10px;
+  font-weight: bold;
+}
+
+.btn-exit {
+  background: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  padding: 6px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-exit:hover { background: #ff4d4d; color: white; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* LOGO - Actualizado para quitar fondo blanco */
+.nav-brand {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 2px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  gap: 12px;
+  cursor: pointer;
+}
+
+.logo-box {
+  width: 38px;
+  height: 38px;
+  /* background: white;  <-- ESTA LÍNEA SE HA ELIMINADO O COMENTADO */
+  background: transparent; /* Ahora el fondo es transparente */
+  border-radius: 8px;
+  padding: 5px;
+  display: flex;
+  justify-content: center; /* Centrado del logo */
+  align-items: center;    /* Centrado del logo */
+}
+
+/* El logo en sí (si es una imagen o SVG) */
+.logo-box img, .logo-box svg {
+  max-width: 100%;
+  max-height: 100%;
+  /* Opcional: si el logo original es oscuro, puedes usar un filtro para aclararlo */
+  /* filter: brightness(0) invert(1); */ 
 }

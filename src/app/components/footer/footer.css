@@ -1,171 +1,166 @@
-/* src/app/components/footer/footer.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* 1. Estructura Principal del Footer */
-.main-footer {
-  background-color: #003366; /* Azul marino acorde al Navbar */
-  color: white;
-  padding: 60px 0 20px 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:host {
+  --footer-bg: #001e3c; /* Azul profundo igual al Navbar */
+  --accent-cyan: #00e5ff;
+  --text-dim: #94a3b8;
+  --transition: all 0.3s ease;
 }
 
-.footer-grid {
+.footer-premium {
+  background-color: var(--footer-bg);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 25px 60px;
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
+  gap: 50px;
 }
 
-/* 2. Sección del Logo y Marca */
-.footer-brand .footer-logo {
+/* BRANDING */
+.footer-logo {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
-.footer-brand .footer-logo img {
-  height: 60px;
-  width: 60px;               /* Dimensiones iguales para círculo perfecto */
-  display: block;
-  object-fit: cover;         /* Evita deformación de la imagen */
-  border-radius: 50%;        /* Forza la forma circular */
-  background-color: white;   /* Fondo blanco para que el logo resalte siempre */
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  transition: transform 0.3s ease;
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  /* Eliminamos el fondo blanco y el círculo */
+  background: transparent !important; 
 }
 
-.footer-brand .footer-logo img:hover {
-  transform: scale(1.1);
-}
-
-.footer-brand .footer-logo span {
+.brand-name {
   font-size: 1.6rem;
   font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
 
-.footer-brand p {
-  color: #bdc3c7;
+.highlight { color: var(--accent-cyan); }
+
+.brand-description {
+  color: var(--text-dim);
   line-height: 1.6;
-  margin-bottom: 20px;
   font-size: 0.95rem;
-}
-
-/* 3. Columnas de Contacto y Enlaces */
-.footer-contact h3, 
-.footer-links h3 {
-  font-size: 1.25rem;
   margin-bottom: 25px;
-  position: relative;
-  font-weight: 600;
 }
 
-.footer-contact h3::after, 
-.footer-links h3::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 40px;
-  height: 2px;
-  background-color: #00d2ff; /* Detalle en cian */
-}
-
-.footer-contact ul, 
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-contact li, 
-.footer-links li {
-  margin-bottom: 15px;
-  color: #bdc3c7;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.footer-contact strong {
-  color: white;
-  display: block;
-  margin-bottom: 3px;
-}
-
-/* 4. Etiquetas y Redes Sociales */
-.emergency-tag {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  border-left: 4px solid #00d2ff;
-  margin-top: 10px;
-}
-
-.social-links {
+.social-pills {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
-.social-icon {
-  background: rgba(255, 255, 255, 0.1);
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+.social-pills .pill {
+  background: rgba(255, 255, 255, 0.05);
   color: white;
   text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 20px;
   font-size: 0.8rem;
-  transition: background 0.3s, transform 0.2s;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
 }
 
-.social-icon:hover {
-  background: #00d2ff;
-  transform: translateY(-3px);
+.social-pills .pill:hover {
+  background: var(--accent-cyan);
+  color: var(--footer-bg);
+  border-color: var(--accent-cyan);
 }
 
-/* 5. Pie de Página (Copyright) */
+/* ENLACES Y CONTACTO */
+.footer-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+  position: relative;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-section ul li a:hover {
+  color: var(--accent-cyan);
+  padding-left: 5px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+
+.contact-item .icon { font-size: 1.2rem; }
+.contact-item p {
+  color: var(--text-dim);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* BARRA INFERIOR */
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 25px;
-  margin-top: 20px;
-  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 25px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bottom-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-dim);
   font-size: 0.85rem;
-  color: #7f8c8d;
 }
 
-/* 6. Diseño Responsivo */
-@media (max-width: 992px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+.legal-links {
+  display: flex;
+  gap: 20px;
 }
 
+.legal-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+.legal-links a:hover { color: white; }
+
+/* RESPONSIVO BÁSICO */
 @media (max-width: 768px) {
-  .footer-grid {
+  .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
-  .footer-contact h3::after, 
-  .footer-links h3::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .footer-brand .footer-logo {
+  .footer-logo, .social-pills, .contact-item {
     justify-content: center;
   }
-  
-  .social-links {
-    justify-content: center;
-  }
-
-  .emergency-tag {
-    border-left: none;
-    border-top: 3px solid #00d2ff;
+  .bottom-container {
+    flex-direction: column;
+    gap: 15px;
   }
 }
