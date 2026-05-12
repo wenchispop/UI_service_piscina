@@ -1,58 +1,102 @@
-/* 1. Base del Navbar */
+/* RESET ABSOLUTO */
 .navbar-premium {
-  background-color: #002447; /* Azul marino */
-  height: 75px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #002447 !important;
+  height: 70px !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* Usamos fuentes del sistema para no romper el budget de Angular */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  font-family: sans-serif;
+  z-index: 9999;
 }
 
-/* 2. Contenedor que mantiene todo en línea */
 .nav-wrapper {
-  width: 100%;
-  max-width: 1400px;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between; /* Separa los 3 bloques */
-  align-items: center; /* Alinea verticalmente al centro */
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 1300px !important;
+  padding: 0 20px !important;
 }
 
-/* 3. Bloques hijos (Marca, Links, Acciones) */
+/* ALINEACIÓN DE BLOQUES HIJOS */
 .nav-brand, .nav-links, .nav-actions {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
   gap: 15px;
 }
 
-/* 4. Estilo de los Links */
-.nav-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+/* MARCA */
+.logo-box img { height: 35px; display: block; }
+.brand-text { color: white; font-weight: bold; font-size: 1.2rem; }
+.highlight { color: #00e5ff; }
 
-.nav-links li {
-  display: flex;
-  align-items: center;
-}
-
+/* LINKS */
+.nav-links { list-style: none; margin: 0; padding: 0; }
+.nav-links li { display: flex; align-items: center; }
 .nav-links a, .drop-btn {
   color: white;
   text-decoration: none;
   font-size: 0.9rem;
-  padding: 10px;
   background: none;
   border: none;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
-/* 5. Dropdowns */
+/* SECCIÓN ACCESO Y CARRITO */
+.access-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.user-avatar { font-size: 1.2rem; color: #00e5ff; }
+.access-text { font-size: 0.9rem; }
+
+.cart-anchor {
+  position: relative;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4d4d;
+  color: white;
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+/* PILL ROL */
+.role-pill {
+  background: rgba(255,255,255,0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.status-dot { width: 8px; height: 8px; background: #555; border-radius: 50%; }
+.admin-active .status-dot { background: #00e5ff; }
+
+/* DROPDOWN */
 .dropdown { position: relative; }
 .dropdown-content {
   position: absolute;
@@ -61,61 +105,11 @@
   background: white;
   min-width: 200px;
   display: none;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 10px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 .dropdown:hover .dropdown-content { display: block; }
-.dropdown-content a { color: #333 !important; display: block; }
-
-/* 6. Sección de Acceso y Carrito */
-.access-link {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.access-icon {
-  font-size: 1.2rem;
-  color: #00e5ff; /* Cyan */
-}
-
-.cart-anchor {
-  position: relative;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.cart-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: red;
-  color: white;
-  font-size: 0.7rem;
-  padding: 2px 5px;
-  border-radius: 50%;
-}
-
-/* 7. Marca y Logo */
-.logo-box img { height: 40px; }
-.brand-text { color: white; font-weight: bold; }
-.highlight { color: #00e5ff; }
-
-/* 8. Rol Pill */
-.role-pill {
-  background: rgba(255,255,255,0.1);
-  padding: 5px 12px;
-  border-radius: 20px;
-  color: white;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.status-dot { width: 8px; height: 8px; background: #666; border-radius: 50%; }
-.admin-active .status-dot { background: #00e5ff; }
+.dropdown-content a { color: #333 !important; display: block; padding: 10px 15px !important; }
 
 .disabled-item { opacity: 0.5; pointer-events: none; }
