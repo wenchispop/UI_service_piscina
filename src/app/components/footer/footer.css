@@ -1,27 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* Eliminado @import para corregir error de Budget de Angular */
 
 :host {
-  --footer-bg: #001e3c; /* Azul profundo igual al Navbar */
+  --footer-bg: #001e3c;
   --accent-cyan: #00e5ff;
   --text-dim: #94a3b8;
-  --transition: all 0.3s ease;
 }
 
 .footer-premium {
   background-color: var(--footer-bg);
   color: white;
-  font-family: 'Inter', sans-serif;
-  padding-top: 80px;
+  /* Fuente del sistema para ahorrar KB */
+  font-family: system-ui, -apple-system, sans-serif;
+  padding-top: 60px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 25px 60px;
+  padding: 0 20px 40px;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
 }
 
 /* BRANDING */
@@ -32,135 +32,47 @@
   margin-bottom: 20px;
 }
 
-.logo-img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  /* Eliminamos el fondo blanco y el círculo */
-  background: transparent !important; 
-}
-
-.brand-name {
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-}
-
+.logo-img { height: 45px; width: auto; }
+.brand-name { font-size: 1.5rem; font-weight: 700; }
 .highlight { color: var(--accent-cyan); }
+.brand-description { color: var(--text-dim); line-height: 1.6; font-size: 0.9rem; }
 
-.brand-description {
-  color: var(--text-dim);
-  line-height: 1.6;
-  font-size: 0.95rem;
-  margin-bottom: 25px;
-}
-
-.social-pills {
-  display: flex;
-  gap: 10px;
-}
-
-.social-pills .pill {
-  background: rgba(255, 255, 255, 0.05);
+/* SOCIAL PILLS */
+.social-pills { display: flex; gap: 10px; margin-top: 20px; }
+.pill {
+  background: rgba(255,255,255,0.05);
   color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.75rem;
   text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: var(--transition);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.social-pills .pill:hover {
-  background: var(--accent-cyan);
-  color: var(--footer-bg);
-  border-color: var(--accent-cyan);
-}
-
-/* ENLACES Y CONTACTO */
+/* SECCIONES */
 .footer-section h3 {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  font-weight: 700;
-  position: relative;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: white;
 }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 12px;
-}
-
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section ul li { margin-bottom: 10px; }
 .footer-section ul li a {
   color: var(--text-dim);
   text-decoration: none;
-  transition: var(--transition);
-}
-
-.footer-section ul li a:hover {
-  color: var(--accent-cyan);
-  padding-left: 5px;
-}
-
-.contact-item {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 18px;
-  align-items: flex-start;
-}
-
-.contact-item .icon { font-size: 1.2rem; }
-.contact-item p {
-  color: var(--text-dim);
-  margin: 0;
   font-size: 0.9rem;
 }
+
+.contact-item { display: flex; gap: 10px; margin-bottom: 15px; }
+.contact-item p { color: var(--text-dim); margin: 0; font-size: 0.9rem; }
 
 /* BARRA INFERIOR */
 .footer-bottom {
   background: rgba(0, 0, 0, 0.2);
-  padding: 25px 0;
+  padding: 20px 0;
+  text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.bottom-container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--text-dim);
-  font-size: 0.85rem;
-}
-
-.legal-links {
-  display: flex;
-  gap: 20px;
-}
-
-.legal-links a {
-  color: var(--text-dim);
-  text-decoration: none;
-}
-
-.legal-links a:hover { color: white; }
-
-/* RESPONSIVO BÁSICO */
-@media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .footer-logo, .social-pills, .contact-item {
-    justify-content: center;
-  }
-  .bottom-container {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
+.footer-bottom p { color: var(--text-dim); font-size: 0.8rem; margin: 0; }
