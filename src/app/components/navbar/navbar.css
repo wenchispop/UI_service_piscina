@@ -1,158 +1,121 @@
-/* RESET DE COMPONENTES */
-:host {
-  --nav-blue: #002447;
-  --cyan: #00e5ff;
-}
-
+/* 1. Base del Navbar */
 .navbar-premium {
-  background-color: var(--nav-blue);
-  height: 75px; /* Altura fija para estabilidad */
+  background-color: #002447; /* Azul marino */
+  height: 75px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: sans-serif;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
+  font-family: sans-serif;
 }
 
+/* 2. Contenedor que mantiene todo en línea */
 .nav-wrapper {
   width: 100%;
   max-width: 1400px;
   padding: 0 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center; /* ALINEACIÓN VERTICAL MAESTRA */
+  justify-content: space-between; /* Separa los 3 bloques */
+  align-items: center; /* Alinea verticalmente al centro */
 }
 
-/* MARCA / LOGO */
-.nav-brand {
+/* 3. Bloques hijos (Marca, Links, Acciones) */
+.nav-brand, .nav-links, .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
-  cursor: pointer;
+  gap: 15px;
 }
 
-.logo-box img {
-  height: 40px;
-  display: block;
-}
-
-.brand-text { color: white; font-weight: 700; font-size: 1.25rem; }
-.highlight { color: var(--cyan); }
-
-/* LINKS CENTRALES */
+/* 4. Estilo de los Links */
 .nav-links {
-  display: flex;
-  align-items: center;
   list-style: none;
-  gap: 10px;
   margin: 0;
   padding: 0;
 }
 
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
 .nav-links a, .drop-btn {
-  color: rgba(255,255,255,0.8);
+  color: white;
   text-decoration: none;
-  padding: 10px 15px;
   font-size: 0.9rem;
-  background: transparent;
+  padding: 10px;
+  background: none;
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  height: 100%;
 }
 
-/* ACCIONES DERECHA */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* BOTÓN ACCESO (BOOTSTRAP) */
-.access-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: white;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-/* Forzamos que el icono de Bootstrap no tenga márgenes extra */
-.bi-person-circle {
-  font-size: 1.4rem;
-  color: var(--cyan);
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-}
-
-.access-text {
-  font-size: 0.9rem;
-}
-
-/* DROPDOWN */
-.dropdown { position: relative; display: flex; align-items: center; }
+/* 5. Dropdowns */
+.dropdown { position: relative; }
 .dropdown-content {
   position: absolute;
   top: 100%;
   left: 0;
   background: white;
-  min-width: 220px;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  min-width: 200px;
   display: none;
-  padding: 8px 0;
+  border-radius: 5px;
+  padding: 10px 0;
 }
 .dropdown:hover .dropdown-content { display: block; }
+.dropdown-content a { color: #333 !important; display: block; }
 
-.dropdown-content a {
-  color: #333 !important;
-  padding: 12px 20px !important;
+/* 6. Sección de Acceso y Carrito */
+.access-link {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-/* OTROS ELEMENTOS */
-.role-pill {
-  background: rgba(255,255,255,0.1);
-  padding: 6px 15px;
-  border-radius: 20px;
+  gap: 5px;
   color: white;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.status-dot { width: 8px; height: 8px; background: #666; border-radius: 50%; }
-.admin-active .status-dot { background: var(--cyan); box-shadow: 0 0 5px var(--cyan); }
+.access-icon {
+  font-size: 1.2rem;
+  color: #00e5ff; /* Cyan */
+}
 
 .cart-anchor {
   position: relative;
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
 .cart-badge {
   position: absolute;
-  top: -5px;
+  top: -8px;
   right: -8px;
-  background: #ff4d4d;
+  background: red;
   color: white;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   padding: 2px 5px;
-  border-radius: 10px;
+  border-radius: 50%;
 }
 
+/* 7. Marca y Logo */
+.logo-box img { height: 40px; }
+.brand-text { color: white; font-weight: bold; }
+.highlight { color: #00e5ff; }
+
+/* 8. Rol Pill */
+.role-pill {
+  background: rgba(255,255,255,0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.status-dot { width: 8px; height: 8px; background: #666; border-radius: 50%; }
+.admin-active .status-dot { background: #00e5ff; }
+
 .disabled-item { opacity: 0.5; pointer-events: none; }
-.badge-soon { font-size: 0.6rem; background: #eee; padding: 2px 4px; border-radius: 4px; }

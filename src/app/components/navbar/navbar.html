@@ -15,19 +15,18 @@
         <button class="drop-btn">Servicios ▾</button>
         <div class="dropdown-content">
           <a routerLink="/agenda">📅 Agendar Mantención</a>
-          <a class="disabled-item">📊 Tabla de Estados <span class="badge-soon">Pronto</span></a>
-          <a class="disabled-item">🛠️ Nueva Mantención <span class="badge-soon">Pronto</span></a>
+          <a class="disabled-item">📊 Tabla de Estados</a>
+          <a class="disabled-item">🛠️ Nueva Mantención</a>
         </div>
       </li>
 
-      <li><a routerLink="/tienda" routerLinkActive="active-link">Tienda</a></li>
+      <li><a routerLink="/tienda">Tienda</a></li>
 
       <li class="dropdown" *ngIf="isAdmin">
-        <button class="drop-btn admin-btn">Administración ▾</button>
+        <button class="drop-btn admin-btn">Admin ▾</button>
         <div class="dropdown-content">
-          <a routerLink="/tienda">📦 Gestionar Insumos</a>
-          <a routerLink="/clientes">👥 Lista de Clientes</a>
-          <a class="disabled-item">💰 Registrar Venta <span class="badge-soon">Pronto</span></a>
+          <a routerLink="/tienda">📦 Insumos</a>
+          <a routerLink="/clientes">👥 Clientes</a>
         </div>
       </li>
     </ul>
@@ -39,14 +38,14 @@
       </div>
 
       <div class="cart-anchor" routerLink="/checkout">
-        <span class="cart-icon">🛒</span>
+        <span>🛒</span>
         <span class="cart-badge" *ngIf="((cartService.cartCount$ | async) ?? 0) > 0">
           {{ cartService.cartCount$ | async }}
         </span>
       </div>
 
       <div class="access-link" routerLink="/login">
-        <i class="bi bi-person-circle"></i>
+        <span class="access-icon">👤</span>
         <span class="access-text">Acceso</span>
       </div>
     </div>
