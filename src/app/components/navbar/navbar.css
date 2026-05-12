@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :host {
-  --nav-blue: #002447;    /* Azul sólido para toda la barra */
+  --nav-blue: #002447;
   --cyan: #00e5ff;
   --white: #ffffff;
   --transition: all 0.25s ease-in-out;
 }
 
 .navbar-premium {
-  background-color: var(--nav-blue); /* Se acabó el blanco */
+  background-color: var(--nav-blue);
   height: 70px;
   display: flex;
   align-items: center;
@@ -29,7 +29,6 @@
   align-items: center;
 }
 
-/* LOGO */
 .nav-brand {
   display: flex;
   align-items: center;
@@ -40,21 +39,16 @@
 .logo-box {
   width: 38px;
   height: 38px;
-  background: white;
-  border-radius: 8px;
-  padding: 5px;
+  background: transparent;
   display: flex;
+  align-items: center;
 }
 
-.brand-text {
-  color: white;
-  font-weight: 700;
-  font-size: 1.25rem;
-}
+.logo-box img { max-width: 100%; }
 
+.brand-text { color: white; font-weight: 700; font-size: 1.25rem; }
 .highlight { color: var(--cyan); }
 
-/* LINKS & DROPDOWNS */
 .nav-links {
   display: flex;
   list-style: none;
@@ -75,7 +69,6 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: var(--transition);
   display: block;
 }
 
@@ -84,143 +77,34 @@
   color: white;
 }
 
-.admin-btn { color: #ffc107 !important; font-weight: 700; }
-
-/* FIX: EL DROPDOWN AHORA ES FÁCIL DE SELECCIONAR */
+/* DROPDOWN */
 .dropdown-content {
   position: absolute;
-  top: 100%; /* Justo debajo del botón */
+  top: 100%;
   left: 0;
   background: white;
-  min-width: 200px;
+  min-width: 240px;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   padding: 8px 0;
   display: none;
   z-index: 10;
-  /* El "puente" para que no se cierre: */
-  margin-top: 0; 
-  border: 1px solid #eee;
 }
 
-/* Este pseudo-elemento llena el espacio vacío entre el botón y el menú */
-.dropdown::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 15px; /* Espacio de seguridad */
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-  animation: fadeIn 0.2s ease-out;
-}
+.dropdown:hover .dropdown-content { display: block; }
 
 .dropdown-content a {
   color: #333 !important;
   padding: 12px 20px !important;
-  border-radius: 0;
-}
-
-.dropdown-content a:hover {
-  background: #f1f5f9 !important;
-  color: var(--nav-blue) !important;
-}
-
-/* ACCIONES */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.role-pill {
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 6px 12px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  color: white;
-}
-
-.status-dot { width: 7px; height: 7px; background: #666; border-radius: 50%; }
-.admin-active { border-color: var(--cyan); background: rgba(0, 229, 255, 0.1); }
-.admin-active .status-dot { background: var(--cyan); box-shadow: 0 0 5px var(--cyan); }
-
-.cart-anchor { position: relative; cursor: pointer; font-size: 1.3rem; }
-.cart-badge {
-  position: absolute;
-  top: -5px;
-  right: -8px;
-  background: #ff4d4d;
-  color: white;
-  font-size: 0.65rem;
-  padding: 2px 5px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-.btn-exit {
-  background: transparent;
-  border: 1px solid #ff4d4d;
-  color: #ff4d4d;
-  padding: 6px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.btn-exit:hover { background: #ff4d4d; color: white; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* LOGO - Actualizado para quitar fondo blanco */
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-}
-
-.logo-box {
-  width: 38px;
-  height: 38px;
-  /* background: white;  <-- ESTA LÍNEA SE HA ELIMINADO O COMENTADO */
-  background: transparent; /* Ahora el fondo es transparente */
-  border-radius: 8px;
-  padding: 5px;
-  display: flex;
-  justify-content: center; /* Centrado del logo */
-  align-items: center;    /* Centrado del logo */
-}
-
-/* El logo en sí (si es una imagen o SVG) */
-.logo-box img, .logo-box svg {
-  max-width: 100%;
-  max-height: 100%;
-  /* Opcional: si el logo original es oscuro, puedes usar un filtro para aclararlo */
-  /* filter: brightness(0) invert(1); */ 
-}
-
-/* ... (mantener el resto igual y actualizar estas clases) ... */
-
-/* ESTADO DESACTIVADO REAL */
-.disabled-item {
-  color: #a1a1a1 !important; /* Gris claro */
-  cursor: not-allowed !important;
-  background: transparent !important;
-  pointer-events: none; /* Esto evita que se pueda hacer clic o hover */
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.disabled-item {
+  color: #a1a1a1 !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
   opacity: 0.6;
 }
 
@@ -230,85 +114,44 @@
   font-size: 0.6rem;
   padding: 2px 5px;
   border-radius: 4px;
-  font-weight: bold;
-  border: 1px solid #ddd;
 }
 
-/* ESTADO ACTIVO (Habilitado) */
-.dropdown-content a:not(.disabled-item) {
-  color: #333 !important;
-  cursor: pointer;
-  transition: background 0.2s;
-}
+.admin-btn { color: #ffc107 !important; }
 
-.dropdown-content a:not(.disabled-item):hover {
-  background: #f0f7ff !important;
-  color: #002447 !important;
-}
-
-/* Botón Admin resaltado */
-.admin-btn {
-  color: #ffc107 !important;
-  font-weight: 700;
-}
-
-/* ... (mantener tus estilos de .navbar-premium y .nav-links) ... */
-
+/* ACCIONES */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 25px; /* Espaciado más amplio para que se vea ordenado */
+  gap: 25px;
 }
 
-/* ESTILO ACCESO (Inspirado en tu imagen) */
-.access-link {
+.role-pill {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
-  padding: 5px 10px;
-  transition: opacity 0.3s ease;
-  color: #ffffff; /* O el color cyan suave si prefieres */
-}
-
-.access-link:hover {
-  opacity: 0.7;
-}
-
-.user-icon-container {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cyan); /* Solo el icono lleva el color de acento */
-}
-
-.user-icon-container svg {
-  width: 100%;
-  height: 100%;
-}
-
-.access-text {
-  font-size: 0.9rem;
-  font-weight: 400; /* Tipografía más delgada */
-  letter-spacing: 0.5px;
-}
-
-/* Ajuste del Carrito para que combine */
-.cart-icon {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-/* Ajuste de la píldora de rol para que no compita */
-.role-pill {
-  border: none; /* Quitamos borde */
-  background: rgba(255, 255, 255, 0.05);
   font-size: 0.75rem;
-  opacity: 0.8;
+  cursor: pointer;
+  color: white;
 }
 
+.status-dot { width: 7px; height: 7px; background: #666; border-radius: 50%; }
+.admin-active .status-dot { background: var(--cyan); box-shadow: 0 0 5px var(--cyan); }
+
+.cart-anchor { position: relative; cursor: pointer; font-size: 1.2rem; }
+.cart-badge {
+  position: absolute;
+  top: -5px; right: -8px;
+  background: #ff4d4d;
+  color: white;
+  font-size: 0.65rem;
+  padding: 2px 5px;
+  border-radius: 10px;
+}
+
+/* ESTILO ACCESO MINIMALISTA */
 .access-link {
   display: flex;
   align-items: center;
@@ -318,17 +161,12 @@
   transition: opacity 0.3s ease;
 }
 
-.access-link:hover {
-  opacity: 0.7;
-}
+.access-link:hover { opacity: 0.7; }
 
 .user-icon-container {
-  width: 18px; /* Tamaño pequeño y discreto */
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cyan); /* Aquí le das el color al icono */
+  width: 20px;
+  height: 20px;
+  color: var(--cyan);
 }
 
 .user-icon-container svg {
@@ -340,5 +178,5 @@
 .access-text {
   font-size: 0.9rem;
   font-weight: 400;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
 }
