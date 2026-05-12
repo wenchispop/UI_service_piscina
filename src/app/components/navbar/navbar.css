@@ -1,149 +1,152 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
+/* RESET DE COMPONENTES */
 :host {
   --nav-blue: #002447;
   --cyan: #00e5ff;
-  --white: #ffffff;
-  --transition: all 0.25s ease-in-out;
 }
 
 .navbar-premium {
   background-color: var(--nav-blue);
-  height: 70px;
+  height: 75px; /* Altura fija para estabilidad */
+  width: 100%;
   display: flex;
   align-items: center;
-  font-family: 'Inter', sans-serif;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  justify-content: center;
+  font-family: sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 .nav-wrapper {
-  max-width: 1400px;
   width: 100%;
-  margin: 0 auto;
-  padding: 0 25px;
+  max-width: 1400px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; /* ALINEACIÓN VERTICAL MAESTRA */
 }
 
+/* MARCA / LOGO */
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
 }
 
-.logo-box {
-  width: 38px;
-  height: 38px;
-  background: transparent;
-  display: flex;
-  align-items: center;
+.logo-box img {
+  height: 40px;
+  display: block;
 }
-
-.logo-box img { max-width: 100%; }
 
 .brand-text { color: white; font-weight: 700; font-size: 1.25rem; }
 .highlight { color: var(--cyan); }
 
+/* LINKS CENTRALES */
 .nav-links {
   display: flex;
+  align-items: center;
   list-style: none;
-  gap: 5px;
+  gap: 10px;
   margin: 0;
   padding: 0;
 }
 
-.nav-links li { position: relative; }
-
 .nav-links a, .drop-btn {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255,255,255,0.8);
   text-decoration: none;
   padding: 10px 15px;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   background: transparent;
   border: none;
-  border-radius: 6px;
   cursor: pointer;
-  display: block;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
-.nav-links a:hover, .active-link, .drop-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+/* ACCIONES DERECHA */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* BOTÓN ACCESO (BOOTSTRAP) */
+.access-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Forzamos que el icono de Bootstrap no tenga márgenes extra */
+.bi-person-circle {
+  font-size: 1.4rem;
+  color: var(--cyan);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.access-text {
+  font-size: 0.9rem;
 }
 
 /* DROPDOWN */
+.dropdown { position: relative; display: flex; align-items: center; }
 .dropdown-content {
   position: absolute;
   top: 100%;
   left: 0;
   background: white;
-  min-width: 240px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  padding: 8px 0;
+  min-width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   display: none;
-  z-index: 10;
+  padding: 8px 0;
 }
-
 .dropdown:hover .dropdown-content { display: block; }
 
 .dropdown-content a {
   color: #333 !important;
   padding: 12px 20px !important;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
-.disabled-item {
-  color: #a1a1a1 !important;
-  cursor: not-allowed !important;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.badge-soon {
-  background: #eeeeee;
-  color: #888;
-  font-size: 0.6rem;
-  padding: 2px 5px;
-  border-radius: 4px;
-}
-
-.admin-btn { color: #ffc107 !important; }
-
-/* ACCIONES */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
+/* OTROS ELEMENTOS */
 .role-pill {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 6px 12px;
+  background: rgba(255,255,255,0.1);
+  padding: 6px 15px;
   border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.75rem;
   cursor: pointer;
-  color: white;
 }
 
-.status-dot { width: 7px; height: 7px; background: #666; border-radius: 50%; }
+.status-dot { width: 8px; height: 8px; background: #666; border-radius: 50%; }
 .admin-active .status-dot { background: var(--cyan); box-shadow: 0 0 5px var(--cyan); }
 
-.cart-anchor { position: relative; cursor: pointer; font-size: 1.2rem; }
+.cart-anchor {
+  position: relative;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 .cart-badge {
   position: absolute;
-  top: -5px; right: -8px;
+  top: -5px;
+  right: -8px;
   background: #ff4d4d;
   color: white;
   font-size: 0.65rem;
@@ -151,32 +154,5 @@
   border-radius: 10px;
 }
 
-/* ESTILO ACCESO MINIMALISTA */
-.access-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  color: white;
-  transition: opacity 0.3s ease;
-}
-
-.access-link:hover { opacity: 0.7; }
-
-.user-icon-container {
-  width: 20px;
-  height: 20px;
-  color: var(--cyan);
-}
-
-.user-icon-container svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.access-text {
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
+.disabled-item { opacity: 0.5; pointer-events: none; }
+.badge-soon { font-size: 0.6rem; background: #eee; padding: 2px 4px; border-radius: 4px; }
