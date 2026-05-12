@@ -209,3 +209,102 @@
   /* Opcional: si el logo original es oscuro, puedes usar un filtro para aclararlo */
   /* filter: brightness(0) invert(1); */ 
 }
+
+/* ... (mantener el resto igual y actualizar estas clases) ... */
+
+/* ESTADO DESACTIVADO REAL */
+.disabled-item {
+  color: #a1a1a1 !important; /* Gris claro */
+  cursor: not-allowed !important;
+  background: transparent !important;
+  pointer-events: none; /* Esto evita que se pueda hacer clic o hover */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.6;
+}
+
+.badge-soon {
+  background: #eeeeee;
+  color: #888;
+  font-size: 0.6rem;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+/* ESTADO ACTIVO (Habilitado) */
+.dropdown-content a:not(.disabled-item) {
+  color: #333 !important;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-content a:not(.disabled-item):hover {
+  background: #f0f7ff !important;
+  color: #002447 !important;
+}
+
+/* Botón Admin resaltado */
+.admin-btn {
+  color: #ffc107 !important;
+  font-weight: 700;
+}
+
+/* ... (mantener tus estilos de .navbar-premium y .nav-links) ... */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Espaciado más amplio para que se vea ordenado */
+}
+
+/* ESTILO ACCESO (Inspirado en tu imagen) */
+.access-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: opacity 0.3s ease;
+  color: #ffffff; /* O el color cyan suave si prefieres */
+}
+
+.access-link:hover {
+  opacity: 0.7;
+}
+
+.user-icon-container {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan); /* Solo el icono lleva el color de acento */
+}
+
+.user-icon-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+.access-text {
+  font-size: 0.9rem;
+  font-weight: 400; /* Tipografía más delgada */
+  letter-spacing: 0.5px;
+}
+
+/* Ajuste del Carrito para que combine */
+.cart-icon {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Ajuste de la píldora de rol para que no compita */
+.role-pill {
+  border: none; /* Quitamos borde */
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  opacity: 0.8;
+}

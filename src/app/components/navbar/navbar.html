@@ -14,24 +14,25 @@
       <li class="dropdown">
         <button class="drop-btn">Servicios ▾</button>
         <div class="dropdown-content">
-          <a routerLink="/agenda">📅 Agenda Mantención</a>
-          <a routerLink="/clientes" *ngIf="isAdmin">👥 Lista de Clientes</a>
+          <a routerLink="/agenda">📅 Agendar Mantención</a>
+          <a class="disabled-item">📊 Tabla de Estados <span class="badge-soon">Pronto</span></a>
+          <a class="disabled-item">🛠️ Nueva Mantención <span class="badge-soon">Pronto</span></a>
         </div>
       </li>
 
       <li><a routerLink="/tienda" routerLinkActive="active-link">Tienda</a></li>
 
       <li class="dropdown" *ngIf="isAdmin">
-        <button class="drop-btn admin-btn">Admin ⚙️</button>
+        <button class="drop-btn admin-btn">Administración ▾</button>
         <div class="dropdown-content">
-          <a routerLink="/admin-productos">📦 Gestionar Inventario</a>
-          <a href="#">📊 Reportes de Venta</a>
+          <a routerLink="/tienda">📦 Gestionar Insumos</a>
+          <a routerLink="/clientes">👥 Lista de Clientes</a>
+          <a class="disabled-item">💰 Registrar Venta <span class="badge-soon">Pronto</span></a>
         </div>
       </li>
     </ul>
 
     <div class="nav-actions">
-      
       <div class="role-pill" (click)="toggleRole()" [class.admin-active]="isAdmin">
         <div class="status-dot"></div>
         <span>{{ isAdmin ? 'Admin' : 'Cliente' }}</span>
@@ -44,8 +45,15 @@
         </span>
       </div>
 
-      <button class="btn-exit" (click)="logout()">Salir</button>
-
+  <div class="access-link" routerLink="/login">
+    <div class="user-icon-container">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+    </div>
+    <span class="access-text">Acceso</span>
+  </div>
     </div>
   </div>
 </nav>
