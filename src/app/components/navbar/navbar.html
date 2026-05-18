@@ -25,7 +25,7 @@
       <li class="dropdown" *ngIf="isAdmin">
         <button class="drop-btn admin-btn">Admin ▾</button>
         <div class="dropdown-content">
-          <a routerLink="/tienda">📦 Insumos</a>
+          <a routerLink="/insumos">📦 Insumos</a>
           <a routerLink="/clientes">👥 Clientes</a>
         </div>
       </li>
@@ -38,14 +38,14 @@
       </div>
 
       <div class="cart-anchor" routerLink="/checkout">
-        <span>🛒</span>
+        <span class="cart-icon">🛒</span>
         <span class="cart-badge" *ngIf="((cartService.cartCount$ | async) ?? 0) > 0">
           {{ cartService.cartCount$ | async }}
         </span>
       </div>
 
       <div class="access-link" routerLink="/login">
-        <span class="access-icon">👤</span>
+        <span class="user-avatar">👤</span>
         <span class="access-text">Acceso</span>
       </div>
     </div>

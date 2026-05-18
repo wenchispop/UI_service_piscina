@@ -5,6 +5,7 @@ import { Clientes } from './components/clientes/clientes';
 import { AgendaComponent } from './components/agenda/agenda';
 import { Checkout } from './components/checkout/checkout';
 import { TiendaComponent } from './components/tienda/tienda';
+import { Insumos } from './components/insumos/insumos';
 
 export const routes: Routes = [
   { path: '', component: HeroComponent },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'clientes', component: Clientes },
   { path: 'agenda', component: AgendaComponent },
   { path: 'tienda', component: TiendaComponent }, 
+  { path: 'insumos', component: Insumos },
   { path: 'checkout', component: Checkout },
   { path: '**', redirectTo: '' } 
 ];

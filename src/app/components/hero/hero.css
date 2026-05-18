@@ -1,6 +1,4 @@
-/* src/app/components/hero/hero.css */
-
-/* Contenedor Global y Estructura */
+/* Estructura Base de tu UI */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -13,145 +11,251 @@
   min-height: 100vh;
 }
 
-/* =========================================
-   BANNER PRINCIPAL (Ajustado y Compacto)
-   ========================================= */
-.main-banner {
+/* =======================================================
+   CARRUSEL AVANZADO CON BOTONES INTERACTIVOS (CSS PURO)
+   ======================================================= */
+.carousel-wrapper {
   position: relative;
-  /* Imagen de fondo con overlay oscuro para legibilidad */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                    url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1600&q=80');
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  border-radius: 0 0 25px 25px;
+  margin-bottom: 45px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Ocultamos los inputs radio nativos de la vista */
+.carousel-wrapper input[type="radio"] {
+  display: none;
+}
+
+.carousel-track {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1); /* Transición premium al cambiar con botón */
+}
+
+.carousel-slide {
+  width: 33.333%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  min-height: 250px; /* Altura compacta solicitada */
   display: flex;
   align-items: center;
   color: white;
-  border-radius: 0 0 25px 25px; /* Bordes redondeados inferiores */
-  margin-bottom: 40px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.main-banner .container {
   position: relative;
-  z-index: 2;
 }
 
-/* Breadcrumb (Dashboard / ...) */
+/* Overlays para oscurecer dinámicamente según la slide */
+.slide-1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.45)), 
+                    url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1600&q=80');
+}
+.slide-2 {
+  background-image: linear-gradient(rgba(0, 36, 71, 0.65), rgba(0, 0, 0, 0.45)), 
+                    url('https://images.unsplash.com/photo-1562184552-997c461abbe6?auto=format&fit=crop&w=1600&q=80');
+}
+.slide-3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 77, 153, 0.4)), 
+                    url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=80');
+}
+
 .breadcrumb {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   margin-bottom: 15px;
+  opacity: 0.9;
 }
+.breadcrumb .active { color: #00e5ff; font-weight: bold; }
 
-.breadcrumb .active {
-  color: white;
-  font-weight: 600;
-}
-
-/* Títulos del Banner */
 .banner-content h1 {
   font-size: 2.8rem;
-  margin: 0 0 8px 0;
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .banner-content p {
   font-size: 1.2rem;
-  margin: 0;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 30px 0;
+  max-width: 600px;
+  opacity: 0.95;
 }
 
-/* =========================================
-   GRILLA DE SERVICIOS (3 Columnas)
-   ========================================= */
+/* BOTÓN WHATSAPP INTERACTIVO */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #25D366;
+  color: white;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+}
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+  background-color: #20ba5a;
+}
+.icon-ws { width: 22px; height: 22px; }
+
+/* ENLAZAR LOS RADIOS CON LA POSICIÓN DEL TRACK */
+#slide-dot-1:checked ~ .carousel-track { transform: translateX(0); }
+#slide-dot-2:checked ~ .carousel-track { transform: translateX(-33.333%); }
+#slide-dot-3:checked ~ .carousel-track { transform: translateX(-66.666%); }
+
+/* DOTS DE NAVEGACIÓN */
+.carousel-navigation {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-dot:hover { background-color: rgba(255, 255, 255, 0.8); }
+
+#slide-dot-1:checked ~ .carousel-navigation .nav-dot:nth-child(1),
+#slide-dot-2:checked ~ .carousel-navigation .nav-dot:nth-child(2),
+#slide-dot-3:checked ~ .carousel-navigation .nav-dot:nth-child(3) {
+  background-color: #00e5ff;
+  width: 30px;
+  border-radius: 10px;
+}
+
+/* =======================================================
+   SECCIÓN DE TARJETAS DE SERVICIOS (MODIFICADA CON MOVIMIENTO Y COLOR)
+   ======================================================= */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  margin-bottom: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .service-card {
-  background: white;
-  border-radius: 15px;
+  background-color: white;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  height: 260px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* CAMBIO: Transición suave para capturar el movimiento de subida */
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
+/* NUEVO: Al pasar el cursor por encima, la tarjeta se eleva elegantemente */
 .service-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 30px rgba(0, 36, 71, 0.18);
 }
 
 .service-card img {
   width: 100%;
-  height: 210px;
+  height: 100%;
   object-fit: cover;
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.5s ease;
 }
 
-.service-card .card-footer {
-  padding: 18px 22px;
-  background-color: #003366; /* Azul marino del navbar */
-  color: white;
+/* Opcional: Zoom suave en la imagen al hacer hover */
+.service-card:hover img {
+  transform: scale(1.04);
+}
+
+/* MODIFICADO: Ahora el footer tiene fondo azul marino permanente bajo las letras */
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #002447; /* Azul marino institucional */
+  padding: 18px 24px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
+  border-top: 2px solid rgba(0, 229, 255, 0.2); /* Sutil línea divisoria cyan */
 }
 
-.service-card .card-footer h3 {
+/* MODIFICADO: Títulos en blanco nativo */
+.card-footer h3 {
   margin: 0;
   font-size: 1.15rem;
-  font-weight: 500;
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 
-.service-card .card-footer .btn-text {
-  color: white;
+/* MODIFICADO: Texto de acción en blanco con flecha resaltada */
+.btn-text {
+  color: #ffffff !important;
   text-decoration: none;
-  font-size: 0.85rem;
-  opacity: 0.9;
-  transition: opacity 0.2s;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 30px;
+  transition: all 0.2s ease;
 }
 
-.service-card .card-footer .btn-text:hover {
-  opacity: 1;
-  text-decoration: underline;
+/* Efecto hover interno exclusivo para el mini-botón */
+.service-card:hover .btn-text {
+  background-color: #00e5ff;
+  color: #002447 !important;
 }
 
-/* =========================================
-   SECCIÓN DE PRODUCTOS (4 Columnas)
-   ========================================= */
-.products-section h2 {
-  color: #003366;
-  font-size: 2rem;
-  margin-bottom: 35px;
-  padding-left: 5px;
-  border-left: 5px solid #004d99;
+/* =======================================================
+   SECCIÓN DE PRODUCTOS DESTACADOS
+   ======================================================= */
+.products-section {
+  margin-top: 55px;
+}
+
+.section-title {
+  font-size: 1.7rem;
+  color: #002447;
+  font-weight: 800;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
 .product-card {
-  background: white;
+  background-color: white;
   border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .product-card .product-image {
@@ -166,7 +270,7 @@
 .product-card .product-image img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover; /* Ajustado para fotos reales */
+  object-fit: cover;
   border-radius: 8px;
 }
 
@@ -193,36 +297,20 @@
 
 /* Botón Agregar al Carrito */
 .btn-add-cart {
-  background-color: #004d99;
+  background-color: #002447;
   color: white;
   border: none;
-  padding: 14px;
+  padding: 12px;
   border-radius: 10px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.2s;
-  width: 100%;
-  margin-top: auto;
 }
 
 .btn-add-cart:hover {
-  background-color: #003366;
-}
-
-.btn-add-cart span {
-  font-size: 0.8rem;
-}
-
-/* Responsivo para móviles */
-@media (max-width: 992px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .products-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 600px) {
-  .services-grid, .products-grid { grid-template-columns: 1fr; }
-  .banner-content h1 { font-size: 2rem; }
+  background-color: #00e5ff;
+  color: #002447;
 }

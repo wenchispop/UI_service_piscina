@@ -1,6 +1,12 @@
-/* RESET ABSOLUTO */
+/* RESET ABSOLUTO Y VARIABLES DE DISEÑO UX */
 .navbar-premium {
-  background-color: #002447 !important;
+  --nav-blue: #002447;
+  --cyan-accent: #00e5ff;
+  --cyan-hover: #00b3cc;
+  --bg-hover-light: rgba(255, 255, 255, 0.08);
+  --shadow-ux: 0 4px 20px rgba(0, 0, 0, 0.25);
+  
+  background-color: var(--nav-blue) !important;
   height: 70px !important;
   width: 100% !important;
   display: flex !important;
@@ -8,9 +14,8 @@
   justify-content: center !important;
   margin: 0 !important;
   padding: 0 !important;
-  /* Usamos fuentes del sistema para no romper el budget de Angular */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 9999;
@@ -29,25 +34,136 @@
 .nav-brand, .nav-links, .nav-actions {
   display: flex !important;
   align-items: center !important;
-  gap: 15px;
+  gap: 18px; /* Un poco más de separación global */
 }
 
-/* MARCA */
-.logo-box img { height: 35px; display: block; }
-.brand-text { color: white; font-weight: bold; font-size: 1.2rem; }
-.highlight { color: #00e5ff; }
-
-/* LINKS */
-.nav-links { list-style: none; margin: 0; padding: 0; }
-.nav-links li { display: flex; align-items: center; }
-.nav-links a, .drop-btn {
-  color: white;
-  text-decoration: none;
-  font-size: 0.9rem;
-  background: none;
-  border: none;
-  padding: 5px 10px;
+/* MARCA / LOGO (Efecto sutil al pasar el cursor) */
+.nav-brand {
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.nav-brand:hover {
+  transform: scale(1.02);
+}
+
+.logo-box img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  color: white;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.highlight {
+  color: var(--cyan-accent);
+}
+
+/* LISTA DE ENLACES PRINCIPALES */
+.nav-links {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* EFECTO INTERACTIVO EN BOTONES / LINKS DEL NAVBAR */
+.nav-links a, .drop-btn {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Animación UX de elevación y brillo al pasar por encima */
+.nav-links a:hover, .drop-btn:hover {
+  color: white;
+  background-color: var(--bg-hover-light);
+  transform: translateY(-2px); /* Desplazamiento vertical UX */
+}
+
+.nav-links a:active, .drop-btn:active {
+  transform: translateY(0);
+}
+
+/* Link Activo */
+.active-link {
+  color: var(--cyan-accent) !important;
+  background-color: rgba(0, 229, 255, 0.1) !important;
+  font-weight: 600;
+}
+
+/* DROPDOWN (MENÚ DESPLEGABLE MEJORADO) */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: #001e3b; /* Fondo ligeramente contrastado para mejor UX */
+  min-width: 210px;
+  box-shadow: var(--shadow-ux);
+  border-radius: 10px;
+  padding: 6px;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Mostrar Menú con suavidad */
+.dropdown:hover .dropdown-content {
+  display: block;
+  animation: slideUp 0.2s ease-out forwards;
+}
+
+/* Ítems del menú desplegable */
+.dropdown-content a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 11px 16px !important;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.9rem !important;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px !important;
+  background: transparent !important;
+  /* Separación interna sutil mediante borde inferior */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none; /* Quitamos el separador al último elemento */
+}
+
+/* Efecto hover interactivo dentro del dropdown */
+.dropdown-content a:hover {
+  color: white !important;
+  background-color: rgba(0, 229, 255, 0.15) !important;
+  transform: translateX(4px) !important; /* Desplazamiento lateral dinámico */
+}
+
+/* Botón de Administración destacado */
+.admin-btn {
+  border: 1px solid rgba(0, 229, 255, 0.3) !important;
+}
+.admin-btn:hover {
+  border-color: var(--cyan-accent) !important;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
 }
 
 /* SECCIÓN ACCESO Y CARRITO */
@@ -55,61 +171,120 @@
   display: flex !important;
   align-items: center !important;
   gap: 8px;
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
 }
 
-.user-avatar { font-size: 1.2rem; color: #00e5ff; }
-.access-text { font-size: 0.9rem; }
+.access-link:hover {
+  background-color: var(--bg-hover-light);
+  color: white;
+  transform: translateY(-2px);
+}
 
+.user-avatar { 
+  font-size: 1.2rem; 
+  color: var(--cyan-accent); 
+}
+
+.access-text { 
+  font-size: 0.9rem; 
+  font-weight: 500;
+}
+
+/* ICONO ANCLA DEL CARRITO INTERACTIVO */
 .cart-anchor {
   position: relative;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+.cart-anchor:hover {
+  background-color: var(--bg-hover-light);
+  transform: scale(1.1) rotate(-5deg); /* Efecto lúdico y moderno */
 }
 
 .cart-badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #ff4d4d;
+  top: -4px;
+  right: -4px;
+  background: #ff3b30; /* Rojo vibrante iOS estándar para alertas */
   color: white;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
+  font-weight: 700;
   padding: 2px 6px;
   border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* PILL ROL */
+/* PILL ROL (CLIENTE / ADMIN SWITCH) */
 .role-pill {
-  background: rgba(255,255,255,0.1);
-  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 6px 14px;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
   gap: 8px;
-  color: white;
-  font-size: 0.75rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
 }
 
-.status-dot { width: 8px; height: 8px; background: #555; border-radius: 50%; }
-.admin-active .status-dot { background: #00e5ff; }
-
-/* DROPDOWN */
-.dropdown { position: relative; }
-.dropdown-content {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  min-width: 200px;
-  display: none;
-  border-radius: 4px;
-  padding: 10px 0;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.role-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }
-.dropdown:hover .dropdown-content { display: block; }
-.dropdown-content a { color: #333 !important; display: block; padding: 10px 15px !important; }
 
-.disabled-item { opacity: 0.5; pointer-events: none; }
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #a1a1a1;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+/* Estado Activo de Admin */
+.admin-active {
+  background: rgba(0, 229, 255, 0.1) !important;
+  border-color: rgba(0, 229, 255, 0.4) !important;
+  color: var(--cyan-accent) !important;
+}
+
+.admin-active .status-dot {
+  background-color: var(--cyan-accent);
+  box-shadow: 0 0 8px var(--cyan-accent);
+}
+
+/* CLASES DE UTILIDAD */
+.disabled-item {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+.disabled-item:hover {
+  background: transparent !important;
+  transform: none !important;
+}
+
+/* ANIMACIONES KEYFRAMES PARA UX */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px);
+  }
+}

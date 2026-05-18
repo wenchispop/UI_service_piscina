@@ -1,0 +1,101 @@
+<div class="admin-container">
+  
+  <div class="admin-header">
+    <div class="title-section">
+      <h1>Panel de Control de Insumos</h1>
+      <p>Administra, edita y añade productos al catálogo de AquaStore</p>
+    </div>
+    <button class="btn-primary" (click)="abrirModalNuevo()">
+      <span>+</span> Añadir Nuevo Producto
+    </button>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre del Producto</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of insumos">
+          <td class="col-img">
+            <div class="thumbnail-box">
+              <img [src]="item.imagen" [alt]="item.nombre">
+            </div>
+          </td>
+          <td class="col-name">
+            <strong>{{ item.nombre }}</strong>
+            <span class="id-tag">ID: #{{ item.id }}</span>
+          </td>
+          <td>
+            <span class="cat-pill" [attr.data-cat]="item.categoria">{{ item.categoria }}</span>
+          </td>
+          <td class="col-price">CLP {{ item.precio | number:'1.0-0' }}</td>
+          <td class="col-actions text-center">
+            <button class="btn-action edit" title="Editar" (click)="abrirModalEditar(item)">✏️</button>
+            <button class="btn-action delete" title="Eliminar" (click)="eliminarInsumo(item.id)">🗑️</button>
+          </td>
+        </tr>
+        <tr *ngIf="insumos.length === 0">
+          <td colspan="5" class="empty-table-state">
+            No hay productos registrados en el catálogo. ¡Añade uno nuevo!
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-overlay" *ngIf="mostrarModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>{{ editando ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
+        <button class="close-x" (click)="cerrarModal()">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Nombre del Producto *</label>
+          <input type="text" [(ngModel)]="insumoForm.nombre" placeholder="Ej. Filtro de Arena Vulcano">
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Categoría</label>
+            <select [(ngModel)]="insumoForm.categoria">
+              <option value="Insumos">Insumos</option>
+              <option value="Equipamiento">Equipamiento</option>
+              <option value="Químicos">Químicos</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Precio (CLP) *</label>
+            <input type="number" [(ngModel)]="insumoForm.precio" placeholder="0">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>URL de la Imagen *</label>
+          <input type="text" [(ngModel)]="insumoForm.imagen" placeholder="https://ejemplo.com/imagen.jpg">
+        </div>
+
+        <div class="image-preview-box" *ngIf="insumoForm.imagen">
+          <p>Vista previa:</p>
+          <img [src]="insumoForm.imagen" alt="Preview" (error)="$event.target.style.display='none'">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" (click)="cerrarModal()">Cancelar</button>
+        <button class="btn-save" (click)="guardarInsumo()">
+          {{ editando ? 'Guardar Cambios' : 'Crear Producto' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

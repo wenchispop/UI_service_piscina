@@ -1,20 +1,66 @@
 <div class="hero-container">
   
-  <div class="main-banner">
-    <div class="container">
-      <div class="breadcrumb">Dashboard / <span class="active">Venta de Insumos</span></div>
-      <div class="banner-content">
-        <div class="text-group">
-          <h1>Compra tus Insumos de Piscinas aquí</h1>
-          <p>Sistema integral para la gestión de ventas de insumos de piscinas</p>
+  <div class="carousel-wrapper">
+    <input type="radio" name="carousel-control" id="slide-dot-1" checked>
+    <input type="radio" name="carousel-control" id="slide-dot-2">
+    <input type="radio" name="carousel-control" id="slide-dot-3">
+
+    <div class="carousel-track">
+      
+      <div class="carousel-slide slide-1">
+        <div class="container">
+          <div class="breadcrumb">Dashboard / <span class="active">Venta de Insumos</span></div>
+          <div class="banner-content">
+            <div class="text-group">
+              <h1>Compra tus Insumos de Piscinas aquí</h1>
+              <p>Sistema integral para la gestión de ventas de insumos de piscinas</p>
+            </div>
+            <a href="https://wa.me/56222270505" target="_blank" class="btn-whatsapp">
+              <svg class="icon-ws" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.321 5.325 0 11.822 0c3.148.002 6.107 1.229 8.33 3.567 2.222 2.339 3.446 5.449 3.443 8.759-.004 6.502-5.327 11.794-11.824 11.794-2.015-.002-3.992-.519-5.736-1.501L0 24zm6.49-16.454c-.12-.267-.245-.272-.359-.277-.093-.004-.2-.004-.307-.004-.107 0-.282.04-.429.2-.147.16-.562.549-.562 1.34s.574 1.554.654 1.663c.08.109 1.107 1.69 2.699 2.373.379.163.674.26.904.334.381.121.727.104 1.001.063.305-.045.938-.383 1.071-.754.133-.371.133-.69.093-.754-.04-.064-.147-.103-.307-.183-.16-.08-.938-.463-1.084-.516-.147-.053-.254-.08-.359.08-.107.16-.414.516-.507.623-.093.107-.187.12-.347.04-.16-.08-.674-.249-1.284-.793-.474-.423-.794-.946-.887-1.107-.093-.16-.01-.247.07-.326.072-.071.16-.187.24-.28.08-.093.107-.16.16-.32.053-.16.027-.3-.013-.38-.04-.08-.359-.866-.492-1.192z"/>
+              </svg>
+              <span>¡Consúltanos por WhatsApp!</span>
+            </a>
+          </div>
         </div>
       </div>
+
+      <div class="carousel-slide slide-2">
+        <div class="container">
+          <div class="breadcrumb">Dashboard / <span class="active">Mantención Profesional</span></div>
+          <div class="banner-content">
+            <div class="text-group">
+              <h1>Mantenciones de Piscinas</h1>
+              <p>Especialistas autorizados en reparación de filtros, tableros eléctricos y bombas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-slide slide-3">
+        <div class="container">
+          <div class="breadcrumb">Dashboard / <span class="active">Tratamiento de Agua</span></div>
+          <div class="banner-content">
+            <div class="text-group">
+              <h1>Disfruta del verano realizando mantenciones de forma preventiva.</h1>
+              <p>Control estricto de pH, cloro y alguicidas para un agua 100% cristalina y saludable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="carousel-navigation">
+      <label for="slide-dot-1" class="nav-dot"></label>
+      <label for="slide-dot-2" class="nav-dot"></label>
+      <label for="slide-dot-3" class="nav-dot"></label>
     </div>
   </div>
 
   <div class="shop-services-section container">
-    
     <div class="services-grid">
+      
       <div class="service-card">
         <img src="https://www.doforms.com/eu/wp-content/uploads/sites/4/2023/07/pool-maintenance-checklist.jpg" alt="Mantenimiento">
         <div class="card-footer">
@@ -32,71 +78,61 @@
       </div>
 
       <div class="service-card" *ngIf="esAdmin">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLa9XnH4ELl8EkG8kEuA5Gb_Axd9YooyJJZA&s" alt="Clientes">
+        <img src="https://cdn.euroinnova.edu.es/img/subidasEditor/dise%C3%B1o%20sin%20t%C3%ADtulo%20(50)-1635254563-1639069996.webp" alt="Administración">
         <div class="card-footer">
-          <h3>Nuestros Clientes</h3>
-          <a routerLink="/clientes" class="btn-text">Ver Más ></a>
+          <h3>Panel de Administración</h3>
+          <a routerLink="/insumos" class="btn-text">Gestionar ></a>
         </div>
       </div>
-    </div>
 
-    <div class="products-section">
-      <h2>Implementos para Piscinas</h2>
-      <div class="products-grid">
-        
-        <div class="product-card">
-          <div class="product-image">
-            <img src="https://limpiafondos.cl/wp-content/uploads/2025/06/12214100-1-Filtro-Emaux-P-768x768.webp" alt="Filtro de Arena">
-          </div>
-          <div class="product-info">
-            <h3>Filtro de Arena</h3>
-            <p class="price">CLP 89.990</p>
-            <button class="btn-add-cart" (click)="agregarAlCarro('Filtro de Arena', 89990, 'https://limpiafondos.cl/wp-content/uploads/2025/06/12214100-1-Filtro-Emaux-P-768x768.webp')">
-              Agregar al Carrito <span>►</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <img src="https://limpiafondos.cl/wp-content/uploads/2025/06/12112100-1-Bomba-Vulcano-BAE-Perfil-600x600.webp" alt="Bomba de Agua">
-          </div>
-          <div class="product-info">
-            <h3>Bomba de Agua</h3>
-            <p class="price">CLP 129.000</p>
-            <button class="btn-add-cart" (click)="agregarAlCarro('Bomba de Agua', 129000, 'https://limpiafondos.cl/wp-content/uploads/2025/06/12112100-1-Bomba-Vulcano-BAE-Perfil-600x600.webp')">
-              Agregar al Carrito <span>►</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <img src="https://limpiafondos.cl/wp-content/uploads/2025/06/11213202-Kit-Limpieza-Piscina-6x4-Frente-600x600.webp" alt="Kit de Limpieza">
-          </div>
-          <div class="product-info">
-            <h3>Kit de Limpieza</h3>
-            <p class="price">CLP 36.500</p>
-            <button class="btn-add-cart" (click)="agregarAlCarro('Kit de Limpieza', 36500, 'https://limpiafondos.cl/wp-content/uploads/2025/06/11213202-Kit-Limpieza-Piscina-6x4-Frente-600x600.webp')">
-              Agregar al Carrito <span>►</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <img src="https://limpiafondos.cl/wp-content/uploads/2025/06/11612100-1-Cloro-Pastilla-600x600.webp" alt="Cloro">
-          </div>
-          <div class="product-info">
-            <h3>Cloro en Pastillas</h3>
-            <p class="price">CLP 24.500</p>
-            <button class="btn-add-cart" (click)="agregarAlCarro('Cloro en Pastillas', 24500, 'https://limpiafondos.cl/wp-content/uploads/2025/06/11612100-1-Cloro-Pastilla-600x600.webp')">
-              Agregar al Carrito <span>►</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
     </div>
   </div>
+
+  <div class="products-section container">
+    <h2 class="section-title">Productos Destacados</h2>
+    
+    <div class="products-grid">
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://limpiafondos.cl/wp-content/uploads/2025/06/12112100-1-Bomba-Vulcano-BAE-Perfil-600x600.webp" alt="Bomba Vulcano">
+        </div>
+        <div class="product-info">
+          <h3>Bomba Vulcano BAE 0.5 HP</h3>
+          <p class="price">CLP 189.900</p>
+          <button class="btn-add-cart" (click)="agregarAlCarro('Bomba Vulcano BAE 0.5 HP', 189900, 'https://limpiafondos.cl/wp-content/uploads/2025/06/12112100-1-Bomba-Vulcano-BAE-Perfil-600x600.webp')">
+            Agregar al Carrito <span>►</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://limpiafondos.cl/wp-content/uploads/2025/06/11213202-Kit-Limpieza-Piscina-6x4-Frente-600x600.webp" alt="Kit de Limpieza">
+        </div>
+        <div class="product-info">
+          <h3>Kit de Limpieza</h3>
+          <p class="price">CLP 36.500</p>
+          <button class="btn-add-cart" (click)="agregarAlCarro('Kit de Limpieza', 36500, 'https://limpiafondos.cl/wp-content/uploads/2025/06/11213202-Kit-Limpieza-Piscina-6x4-Frente-600x600.webp')">
+            Agregar al Carrito <span>►</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://limpiafondos.cl/wp-content/uploads/2025/06/11612100-1-Cloro-Pastilla-600x600.webp" alt="Cloro Pastillas">
+        </div>
+        <div class="product-info">
+          <h3>Cloro Pastillas 1kg</h3>
+          <p class="price">CLP 11.200</p>
+          <button class="btn-add-cart" (click)="agregarAlCarro('Cloro Pastillas 1kg', 11200, 'https://limpiafondos.cl/wp-content/uploads/2025/06/11612100-1-Cloro-Pastilla-600x600.webp')">
+            Agregar al Carrito <span>►</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>

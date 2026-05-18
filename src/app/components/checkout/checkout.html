@@ -5,17 +5,32 @@
     <div class="checkout-grid">
       <div class="cart-items-section">
         <div class="cart-card" *ngFor="let item of cartService.getCartItems()">
+          
           <div class="item-img">
             <img [src]="item.imagen" [alt]="item.nombre">
           </div>
+          
           <div class="item-details">
             <span class="item-cat">{{ item.categoria }}</span>
             <h3>{{ item.nombre }}</h3>
-            <p class="item-price">CLP {{ item.precio | number:'1.0-0' }}</p>
+            <p class="item-price">CLP {{ item.precio | number:'1.0-0' }} c/u</p>
           </div>
+
+          <div class="quantity-control">
+            <button class="btn-qty" (click)="bajarCantidad(item)">-</button>
+            <span class="qty-number">{{ item.cantidad ?? 1 }}</span>
+            <button class="btn-qty" (click)="subirCantidad(item)">+</button>
+          </div>
+
+          <div class="item-subtotal-box">
+            <p class="subtotal-label">Subtotal</p>
+            <p class="subtotal-price">CLP {{ (item.precio * (item.cantidad ?? 1)) | number:'1.0-0' }}</p>
+          </div>
+
           <div class="item-actions">
-            <button class="btn-remove" title="Eliminar">🗑</button>
+            <button class="btn-remove" title="Eliminar" (click)="cartService.removeFromCart(item.id)">🗑</button>
           </div>
+
         </div>
       </div>
 
@@ -59,6 +74,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 

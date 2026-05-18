@@ -7,6 +7,7 @@ export interface Producto {
   precio: number;
   imagen: string;
   categoria: string;
+  cantidad?: number; // Propiedad clave para controlar las cantidades
 }
 
 @Injectable({ providedIn: 'root' })
@@ -18,16 +19,39 @@ export class CartService {
   cartCount$ = this._cartCount.asObservable();
   total$ = this._total.asObservable();
 
+  // Agrega un producto o incrementa su cantidad si ya existe
   addToCart(product: Producto) {
-    this.cartItems.push(product);
-    this._cartCount.next(this.cartItems.length);
+    const existingItem = this.cartItems.find(item => item.id === product.id);
+
+    if (existingItem) {
+      existingItem.cantidad = (existingItem.cantidad ?? 1) + 1;
+    } else {
+      this.cartItems.push({ ...product, cantidad: 1 });
+    }
+    this.updateCartData();
+  }
+
+  // Elimina completamente un producto del carrito usando su ID
+  removeFromCart(productId: number) {
+    this.cartItems = this.cartItems.filter(item => item.id !== productId);
+    this.updateCartData();
+  }
+
+  getCartItems() { 
+    return this.cartItems; 
+  }
+
+  // Permite al componente forzar una actualización cuando cambie la cantidad manualmente
+  updateCartData() {
+    // Cuenta total considerando la cantidad individual de cada producto
+    const totalCount = this.cartItems.reduce((acc, item) => acc + (item.cantidad ?? 1), 0);
+    this._cartCount.next(totalCount);
     this.updateTotal();
   }
 
-  getCartItems() { return this.cartItems; }
-
   private updateTotal() {
-    const total = this.cartItems.reduce((acc, item) => acc + item.precio, 0);
+    // Total de dinero considerando la multiplicación de precio * cantidad
+    const total = this.cartItems.reduce((acc, item) => acc + (item.precio * (item.cantidad ?? 1)), 0);
     this._total.next(total);
   }
 
