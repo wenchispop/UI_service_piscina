@@ -14,5 +14,6 @@ export class AuthService {
   // Método para cambiar el valor
   setAdminMode(status: boolean) {
     this.isAdminSubject.next(status);
+    
   }
 }

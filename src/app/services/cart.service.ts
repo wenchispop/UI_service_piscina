@@ -31,7 +31,6 @@ export class CartService {
     this.updateCartData();
   }
 
-  // Elimina completamente un producto del carrito usando su ID
   removeFromCart(productId: number) {
     this.cartItems = this.cartItems.filter(item => item.id !== productId);
     this.updateCartData();
