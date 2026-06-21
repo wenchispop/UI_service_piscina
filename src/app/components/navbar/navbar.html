@@ -11,22 +11,15 @@
     <ul class="nav-links">
       <li><a routerLink="/" routerLinkActive="active-link">Inicio</a></li>
       
-      <li class="dropdown">
-        <button class="drop-btn">Servicios ▾</button>
-        <div class="dropdown-content">
-          <a routerLink="/agenda">📅 Agendar Mantención</a>
-          <a class="disabled-item">📊 Tabla de Estados</a>
-          <a class="disabled-item">🛠️ Nueva Mantención</a>
-        </div>
-      </li>
-
       <li><a routerLink="/tienda">Tienda</a></li>
+      <li><a routerLink="/pedidos">Pedidos</a></li>
 
       <li class="dropdown" *ngIf="isAdmin">
         <button class="drop-btn admin-btn">Admin ▾</button>
         <div class="dropdown-content">
           <a routerLink="/insumos">📦 Insumos</a>
           <a routerLink="/clientes">👥 Clientes</a>
+          <a routerLink="/pedidos">📦 Lista de pedidos</a>
         </div>
       </li>
     </ul>

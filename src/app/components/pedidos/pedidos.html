@@ -1,0 +1,90 @@
+<div class="pedidos-container container">
+  <div class="header-section">
+    <h2>Historial de Pedidos</h2>
+    <span class="badge-role" [ngClass]="esAdmin ? 'role-admin' : 'role-client'">
+      Modo: {{ esAdmin ? 'Administrador' : 'Cliente' }}
+    </span>
+  </div>
+
+  <div *ngIf="pedidosFiltrados.length === 0" class="no-orders">
+    <p>No se encontraron pedidos registrados.</p>
+  </div>
+
+  <div *ngIf="pedidosFiltrados.length > 0" class="table-wrapper">
+    <table class="pedidos-table">
+      <thead>
+        <tr>
+          <th>ID Pedido</th>
+          <th *ngIf="esAdmin">Cliente</th>
+          <th>Fecha</th>
+          <th>Detalle Productos</th>
+          <th>Total</th>
+          <th>Estado</th>
+          <th>Acciones / Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidosFiltrados">
+          <!-- ID -->
+          <td class="bold-text">{{ pedido.id }}</td>
+          
+          <!-- Nombre Cliente (Solo Admin) -->
+          <td *ngIf="esAdmin">{{ pedido.clienteNombre }}</td>
+          
+          <!-- Fecha -->
+          <td>{{ pedido.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+          
+          <!-- Detalles -->
+          <td>
+            <div *ngFor="let item of pedido.items" class="product-item">
+              <span>• {{ item.productName }} (x{{ item.quantity }})</span>
+            </div>
+          </td>
+          
+          <!-- Total -->
+          <td class="price-text">CLP {{ pedido.total | number:'1.0-0' }}</td>
+          
+          <!-- Estado con Badge Dinámico -->
+          <td>
+            <span class="status-badge" [ngClass]="{
+              'status-pendiente': pedido.estado === 'Pendiente',
+              'status-aprobado': pedido.estado === 'Aprobado',
+              'status-cancelado': pedido.estado === 'Cancelado'
+            }">
+              {{ pedido.estado }}
+            </span>
+          </td>
+          
+          <!-- Acciones Dinámicas -->
+          <td>
+            <!-- VISTA CLIENTE: Cancelar si está pendiente -->
+            <div *ngIf="!esAdmin">
+              <button 
+                *ngIf="pedido.estado === 'Pendiente'" 
+                class="btn-action btn-cancel" 
+                (click)="cancelarCliente(pedido.id)">
+                Solicitar Cancelación
+              </button>
+              <p *ngIf="pedido.estado === 'Cancelado'" class="cancel-reason">
+                {{ pedido.motivoCancelacion }}
+              </p>
+              <span *ngIf="pedido.estado === 'Aprobado'" class="text-success">✔ En camino</span>
+            </div>
+
+            <!-- VISTA ADMINISTRADOR: Cancelar con modal o prompt de motivo -->
+            <div *ngIf="esAdmin">
+              <div *ngIf="pedido.estado !== 'Cancelado'" class="admin-actions">
+                <button class="btn-action btn-danger" (click)="cancelarAdmin(pedido.id)">
+                  Cancelar Pedido
+                </button>
+              </div>
+              <p *ngIf="pedido.estado === 'Cancelado'" class="cancel-reason admin-note">
+                <strong>Motivo:</strong> {{ pedido.motivoCancelacion }}
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

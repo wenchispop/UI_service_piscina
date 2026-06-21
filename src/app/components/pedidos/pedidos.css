@@ -1,0 +1,107 @@
+.pedidos-container {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-top: 30px;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #f4f7f6;
+  padding-bottom: 15px;
+}
+
+.header-section h2 {
+  color: #002447;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* Badges de Roles */
+.badge-role {
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+.role-client { background-color: #e0f7fa; color: #006064; }
+.role-admin { background-color: #ffebee; color: #c62828; }
+
+/* Estilos de Tabla */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.pedidos-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.pedidos-table th {
+  background-color: #f4f7f6;
+  color: #002447;
+  padding: 15px;
+  font-weight: 700;
+}
+
+.pedidos-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eef2f5;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.bold-text { font-weight: 700; color: #2c3e50; }
+.price-text { font-weight: 800; color: #004d99; }
+
+.product-item {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+/* Badges de Estado del Pedido */
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+.status-pendiente { background-color: #fff3e0; color: #f57c00; }
+.status-aprobado { background-color: #e8f5e9; color: #2e7d32; }
+.status-cancelado { background-color: #ffebee; color: #c62828; }
+
+/* Botones de acción */
+.btn-action {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel { background-color: #f4f7f6; color: #7f8c8d; }
+.btn-cancel:hover { background-color: #e2e7e9; }
+
+.btn-danger { background-color: #c62828; color: white; }
+.btn-danger:hover { background-color: #b71c1c; }
+
+.cancel-reason {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin: 5px 0 0 0;
+  font-style: italic;
+}
+
+.admin-note { color: #c62828; }
+.no-orders { text-align: center; padding: 40px; color: #7f8c8d; }

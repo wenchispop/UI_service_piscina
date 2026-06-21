@@ -82,7 +82,6 @@
           <label>URL de la Imagen *</label>
           <input type="text" [(ngModel)]="insumoForm.imagen" placeholder="https://ejemplo.com/imagen.jpg">
         </div>
-
         <div class="image-preview-box" *ngIf="insumoForm.imagen">
           <p>Vista previa:</p>
           <img [src]="insumoForm.imagen" alt="Preview" (error)="$event.target.style.display='none'">

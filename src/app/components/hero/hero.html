@@ -62,10 +62,11 @@
     <div class="services-grid">
       
       <div class="service-card">
-        <img src="https://www.doforms.com/eu/wp-content/uploads/sites/4/2023/07/pool-maintenance-checklist.jpg" alt="Mantenimiento">
+        <img src="https://avalco.cl/img/cms/opt/alcohol-melaza.jpg" alt="Ofertas">
         <div class="card-footer">
-          <h3>Servicios de Mantención</h3>
-          <a routerLink="/agenda" class="btn-text">Ver Más ></a>
+          <h3>Productos en oferta</h3>
+          <!-- Modificación aquí: -->
+          <a routerLink="/tienda" [queryParams]="{ Ofertas: true }" class="btn-text">Ver Más ></a>
         </div>
       </div>
 
