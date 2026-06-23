@@ -48,7 +48,7 @@ ng test
 
 For end-to-end (e2e) testing, run:
 
-```bash
+```bash  
 ng e2e
 ```
 
