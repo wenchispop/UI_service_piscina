@@ -7,6 +7,7 @@ import { Checkout } from './components/checkout/checkout';
 import { TiendaComponent } from './components/tienda/tienda';
 import { Insumos } from './components/insumos/insumos';
 import { PedidosComponent } from './components/pedidos/pedidos';
+import { Formulario } from './components/formulario/formulario';
 
 export const routes: Routes = [
   { path: '', component: HeroComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'insumos', component: Insumos },
   { path: 'checkout', component: Checkout },
   { path: 'pedidos', component: PedidosComponent },
+  { path: 'formulario', component: Formulario },
   { path: '**', redirectTo: '' } 
 ];

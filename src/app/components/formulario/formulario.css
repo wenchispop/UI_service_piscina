@@ -1,0 +1,156 @@
+.formulario-page {
+  padding: 60px 0 100px;
+  min-height: calc(100vh - 180px);
+}
+
+.form-header {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.form-header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  color: #002447;
+}
+
+.form-header p {
+  font-size: 1rem;
+  color: #33475b;
+  line-height: 1.7;
+}
+
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 36px;
+  border-radius: 24px;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 700;
+  color: #002447;
+}
+
+.form-group input,
+.form-group textarea {
+  border: 1px solid #d9e2ec;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #102a43;
+  background-color: #f8fafb;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00b5ff;
+  box-shadow: 0 0 0 4px rgba(0, 181, 255, 0.12);
+}
+
+.error-message {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #c0392b;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 36, 71, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.success-modal {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  max-width: 460px;
+  width: 100%;
+  padding: 32px;
+  text-align: center;
+}
+
+.success-modal h2 {
+  margin-bottom: 12px;
+  color: #002447;
+}
+
+.success-modal p {
+  margin-bottom: 24px;
+  color: #33475b;
+  line-height: 1.7;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-submit,
+.btn-secondary {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-submit {
+  color: white;
+  background-color: #002447;
+}
+
+.btn-submit:hover {
+  background-color: #00e5ff;
+  color: #002447;
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #002447;
+  border: 1px solid #002447;
+}
+
+.btn-secondary:hover {
+  background-color: #002447;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 24px;
+  }
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

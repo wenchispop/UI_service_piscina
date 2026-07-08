@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CartService, Producto } from '../../services/cart.service'; 
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 interface Slide {
   image: string;
@@ -21,7 +23,9 @@ interface Slide {
 export class HeroComponent implements OnInit, OnDestroy {
   esAdmin = false;
   currentSlide = 0;
+  showMessageSent = false;
   private autoPlayTimer: any;
+  private routerSubscription?: Subscription;
 
   // Diapositivas para el carrusel superior grande con sus enlaces de redirección correctos
   slides: Slide[] = [
@@ -47,18 +51,34 @@ export class HeroComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private cartService: CartService 
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.authService.isAdmin$.subscribe(status => {
       this.esAdmin = status;
     });
+
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('mensaje') === 'enviado') {
+          this.showMessageSent = true;
+          setTimeout(() => {
+            this.showMessageSent = false;
+          }, 4500);
+          this.router.navigate(['/'], { replaceUrl: true });
+        }
+      });
+
     this.startAutoPlay();
   }
 
   ngOnDestroy() {
     this.stopAutoPlay();
+    this.routerSubscription?.unsubscribe();
   }
 
   startAutoPlay() {
@@ -90,5 +110,9 @@ export class HeroComponent implements OnInit, OnDestroy {
       categoria: 'Insumos'
     };
     this.cartService.addToCart(producto);
+  }
+
+  closePopup() {
+    this.showMessageSent = false;
   }
 }

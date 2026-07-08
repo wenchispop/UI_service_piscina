@@ -69,6 +69,13 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* foco de inputs */
+.input-container input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.18);
+  border-color: #3498db;
+}
+
 /* Acciones inferiores (Remember me / Forgot) */
 .form-actions {
   display: flex;
@@ -113,4 +120,36 @@
 .btn-login-submit:hover {
   background-color: #34495e;
   color: white;
+}
+
+/* botón deshabilitado */
+.btn-login-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* modal simple */
+.login-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.login-modal {
+  background: #fff;
+  color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+}
+.login-modal .actions {
+  margin-top: 16px;
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
 }

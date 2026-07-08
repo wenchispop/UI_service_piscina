@@ -55,6 +55,7 @@
             <h4>Datos de Despacho</h4>
             <input type="text" placeholder="Nombre completo" class="form-input">
             <input type="text" placeholder="Dirección de envío" class="form-input">
+            <input #email type="email" placeholder="Correo electrónico (obligatorio)" class="form-input" required>
             
             <h4>Método de Pago</h4>
             <div class="payment-selector">
@@ -68,7 +69,7 @@
               </label>
             </div>
 
-            <button class="btn-pay" (click)="confirmarCompra()">
+            <button class="btn-pay" (click)="confirmarCompra(email.value)">
               Confirmar y Pagar ➔
             </button>
           </div>
@@ -86,4 +87,14 @@
       <button class="btn-back" routerLink="/tienda">Ir a la tienda</button>
     </div>
   </ng-template>
+  
+  <div *ngIf="modalVisible" class="checkout-modal-backdrop">
+    <div class="checkout-modal">
+      <h3>{{ modalTitle }}</h3>
+      <p>{{ modalMessage }}</p>
+      <div class="actions">
+        <button class="btn-pay" (click)="onModalConfirm()">Aceptar</button>
+      </div>
+    </div>
+  </div>
 </div>

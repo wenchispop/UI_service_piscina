@@ -5,13 +5,13 @@
       <img src="/user-icon.png" alt="User" class="user-avatar-img">
     </div>
 
-    <form class="login-form">
+    <form class="login-form" (submit)="onSubmit(username.value, password.value, $event)">
       <div class="input-container">
-        <i class="bi bi-person"></i> <input type="text" placeholder="Username">
+        <i class="bi bi-person"></i> <input #username type="text" placeholder="Username">
       </div>
       
       <div class="input-container">
-        <i class="bi bi-lock"></i> <input type="password" placeholder="Password">
+        <i class="bi bi-lock"></i> <input #password type="password" placeholder="Password">
       </div>
 
       <div class="form-actions">

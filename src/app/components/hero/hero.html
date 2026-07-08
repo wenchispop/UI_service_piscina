@@ -78,6 +78,14 @@
         </div>
       </div>
 
+      <div class="service-card support-card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80" alt="Soporte pedido">
+        <div class="card-footer">
+          <h3>Problema con tu pedido?</h3>
+          <a routerLink="/formulario" class="btn-text">Contáctanos ></a>
+        </div>
+      </div>
+
       <div class="service-card" *ngIf="esAdmin">
         <img src="https://cdn.euroinnova.edu.es/img/subidasEditor/dise%C3%B1o%20sin%20t%C3%ADtulo%20(50)-1635254563-1639069996.webp" alt="Administración">
         <div class="card-footer">
@@ -90,6 +98,13 @@
   </div>
 
   <div class="products-section container">
+    <div *ngIf="showMessageSent" class="popup-confirmation">
+      <div class="popup-content">
+        <p>El mensaje se ha enviado correctamente.</p>
+        <button class="popup-close" (click)="closePopup()">Cerrar</button>
+      </div>
+    </div>
+
     <h2 class="section-title">Productos Destacados</h2>
     
     <div class="products-grid">

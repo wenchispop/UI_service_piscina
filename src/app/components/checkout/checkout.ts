@@ -11,6 +11,10 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./checkout.css']
 })
 export class Checkout { 
+  modalVisible = false;
+  modalTitle = '';
+  modalMessage = '';
+  modalType: 'success' | 'error' = 'success';
 
   constructor(
     public cartService: CartService, 
@@ -33,12 +37,41 @@ export class Checkout {
     }
   }
 
-  confirmarCompra() {
+  confirmarCompra(email?: string) {
     const totalItems = this.cartService.getCartItems().length;
-    if (totalItems > 0) {
-      alert("🎉 ¡Compra confirmada! Hemos enviado los detalles a tu correo.");
+    if (totalItems <= 0) {
+      this.modalType = 'error';
+      this.modalTitle = 'Carrito vacío';
+      this.modalMessage = 'No hay artículos en el carrito para procesar la compra.';
+      this.modalVisible = true;
+      return;
+    }
+
+    // Validación simple del correo
+    const emailTrim = (email || '').trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailTrim || !emailRegex.test(emailTrim)) {
+      this.modalType = 'error';
+      this.modalTitle = 'Correo inválido';
+      this.modalMessage = 'Por favor ingresa un correo electrónico válido antes de continuar.';
+      this.modalVisible = true;
+      return;
+    }
+
+    // Mostrar modal de éxito con la simulación de envío
+    this.modalType = 'success';
+    this.modalTitle = 'Compra confirmada';
+    this.modalMessage = `🎉 Se ha enviado la boleta a ${emailTrim}.\nEl envío será gestionado por ChileExpress.`;
+    this.modalVisible = true;
+  }
+
+  onModalConfirm() {
+    if (this.modalType === 'success') {
       this.cartService.clearCart();
+      this.modalVisible = false;
       this.router.navigate(['/']);
+    } else {
+      this.modalVisible = false;
     }
   }
 }

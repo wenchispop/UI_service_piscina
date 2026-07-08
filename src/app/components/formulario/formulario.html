@@ -1,0 +1,76 @@
+<div class="formulario-page container">
+  <div class="form-header">
+    <h1>¿Tiene un problema con su pedido?</h1>
+    <p>Complete este formulario y nuestro equipo de soporte le responderá lo antes posible.</p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="contact-form">
+    <div class="form-group">
+      <label for="nombre">Nombre completo</label>
+      <input
+        id="nombre"
+        name="nombre"
+        type="text"
+        [(ngModel)]="formData.nombre"
+        required
+        placeholder="Escribe tu nombre"
+        (blur)="markFieldAsTouched('nombre')"
+      />
+      <p class="error-message" *ngIf="touchedFields.nombre && !isFormValid">Este campo es obligatorio.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        [(ngModel)]="formData.email"
+        required
+        placeholder="example@correo.com"
+        (blur)="markFieldAsTouched('email')"
+      />
+      <p class="error-message" *ngIf="touchedFields.email && !isFormValid">Este campo es obligatorio.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="pedido">Número de pedido (opcional)</label>
+      <input
+        id="pedido"
+        name="pedido"
+        type="text"
+        [(ngModel)]="formData.pedido"
+        placeholder="Ej. 12345"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="mensaje">Detalle del problema</label>
+      <textarea
+        id="mensaje"
+        name="mensaje"
+        rows="6"
+        [(ngModel)]="formData.mensaje"
+        required
+        placeholder="Cuéntanos qué sucedió con tu pedido"
+        (blur)="markFieldAsTouched('mensaje')"
+      ></textarea>
+      <p class="error-message" *ngIf="touchedFields.mensaje && !isFormValid">Este campo es obligatorio.</p>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit" [disabled]="!isFormValid">
+        Enviar mensaje
+      </button>
+      <a routerLink="/" class="btn-secondary">Volver al inicio</a>
+    </div>
+  </form>
+</div>
+
+<div class="modal-backdrop" *ngIf="showSuccessModal">
+  <div class="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-title">
+    <h2 id="success-title">¡Solicitud enviada!</h2>
+    <p>Se ha generado tu solicitud y hemos enviado tu mensaje. A la brevedad uno de nuestros asesores te responderá.</p>
+    <button type="button" class="btn-submit" (click)="closeSuccessModal()">Entendido</button>
+  </div>
+</div>
