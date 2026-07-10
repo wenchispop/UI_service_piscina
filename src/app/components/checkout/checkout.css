@@ -209,6 +209,11 @@
   margin-top: 15px;
 }
 
+.discount {
+  color: #10b981;
+  font-weight: 700;
+}
+
 .free { color: #10b981; font-weight: bold; }
 hr { border: 0; border-top: 1px solid #f1f5f9; margin: 15px 0; }
 
@@ -218,6 +223,22 @@ hr { border: 0; border-top: 1px solid #f1f5f9; margin: 15px 0; }
   color: #334155;
   font-size: 0.95rem;
   font-weight: 600;
+}
+
+.customer-code-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.customer-code-input {
+  margin-bottom: 0;
+}
+
+.customer-code-status {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: #475569;
 }
 
 .form-input {
@@ -259,6 +280,16 @@ hr { border: 0; border-top: 1px solid #f1f5f9; margin: 15px 0; }
   font-size: 0.9rem;
   color: #334155;
   font-weight: 500;
+}
+
+.btn-apply-code {
+  background: #00e5ff;
+  color: #002447;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 16px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .btn-pay {

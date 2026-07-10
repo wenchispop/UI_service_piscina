@@ -19,4 +19,13 @@ describe('Checkout', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should apply the gold discount when the client code is ORO', () => {
+    component.customerCode = 'ORO';
+
+    component.applyCustomerCode();
+
+    expect(component.discountRate).toBe(0.1);
+    expect(component.discountLabel).toBe('Cliente Oro');
+  });
 });
